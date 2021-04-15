@@ -1,0 +1,4 @@
+graft src/ilara
+graft docs
+include *.rst
+global-exclude *.pyc
