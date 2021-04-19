@@ -15,7 +15,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Copyright 2018-2020 by it's authors.
+# Copyright 2018-2021 by it's authors.
 # Some rights reserved, see README and LICENSE.
 
 import os
@@ -29,7 +29,7 @@ from plone.app.i18n.locales.browser.selector import LanguageSelector
 from plone.resource.utils import iterDirectoriesOfType
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from senaite.core.supermodel.interfaces import ISuperModel
+from senaite.app.supermodel.interfaces import ISuperModel
 from senaite.impress import logger
 from senaite.impress.config import PAPERFORMATS
 from senaite.impress.interfaces import IMultiReportView

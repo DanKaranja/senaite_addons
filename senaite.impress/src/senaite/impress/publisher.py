@@ -15,7 +15,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Copyright 2018-2020 by it's authors.
+# Copyright 2018-2021 by it's authors.
 # Some rights reserved, see README and LICENSE.
 
 import logging
@@ -51,7 +51,7 @@ class Publisher(object):
     css_class_report = "report"
     css_class_header = "section-header"
     css_class_footer = "section-footer"
-    css_resources = "++resource++senaite.impress.static/css"
+    css_resources = "++plone++senaite.impress.static/css"
 
     def __init__(self):
         # Ignore WeasyPrint warnings for unknown CSS properties
