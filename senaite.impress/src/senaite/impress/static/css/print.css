@@ -1,0 +1,28 @@
+.report {
+  overflow: hidden;
+  position: relative;
+  /* Includes padding and border in the element's total width and height */
+  box-sizing: border-box;
+  font-family: Tahoma sans-serif;
+  font-size: 9pt;
+}
+
+@media print {
+  .noprint { display: none; }
+  .report { page-break-after: always; overflow: visible; }
+  h1, h2, h3, h4, h5 { page-break-after: avoid; }
+  div.row { page-break-inside: avoid; }
+}
+
+/** For screen preview **/
+@media screen {
+  body {
+    background: #e0e0e0;
+  }
+  .report {
+    background: white;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    margin: 5mm auto; /* separator between pages */
+    padding: 0!important; /* Avoid double padding in the screen view */
+  }
+}

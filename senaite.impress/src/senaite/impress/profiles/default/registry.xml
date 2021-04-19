@@ -1,0 +1,14 @@
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="senaite.impress">
+
+  <records
+      interface="senaite.impress.controlpanel.IImpressControlPanel"
+      prefix="senaite.impress" />
+
+  <!-- Cleanup after package rename -->
+  <record name="senaite.publisher.default_orientation" remove="True" />
+  <record name="senaite.publisher.default_paperformat" remove="True" />
+  <record name="senaite.publisher.default_template" remove="True" />
+
+</registry>
