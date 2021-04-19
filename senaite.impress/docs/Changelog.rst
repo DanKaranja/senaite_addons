@@ -1,24 +1,3 @@
-2.0.0rc3 (2021-01-04)
----------------------
-
-- Updated resources
-- Updated build system to Webpack 5
-- #103 Fix remarks rendering in reports
-- #101 Fix Traceback for CCEmails rendering in publish view
-
-
-2.0.0rc2 (2020-10-13)
----------------------
-
-- Updated resources
-
-
-2.0.0rc1 (2020-08-05)
----------------------
-
-- Compatibility with `senaite.core` 2.x
-
-
 1.2.4 (2020-08-05)
 ------------------
 

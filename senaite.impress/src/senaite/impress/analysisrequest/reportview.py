@@ -15,7 +15,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Copyright 2018-2021 by it's authors.
+# Copyright 2018-2020 by it's authors.
 # Some rights reserved, see README and LICENSE.
 
 from collections import Iterable
@@ -32,7 +32,7 @@ from bika.lims.workflow import getTransitionDate
 from Products.CMFPlone.i18nl10n import ulocalized_time
 from Products.CMFPlone.utils import safe_unicode
 from bika.lims import api
-from senaite.app.supermodel.interfaces import ISuperModel
+from senaite.core.supermodel.interfaces import ISuperModel
 from senaite.impress import logger
 from senaite.impress.decorators import returns_super_model
 from senaite.impress.reportview import ReportView as Base

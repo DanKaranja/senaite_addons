@@ -15,7 +15,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Copyright 2018-2021 by it's authors.
+# Copyright 2018-2020 by it's authors.
 # Some rights reserved, see README and LICENSE.
 
 import itertools
@@ -25,7 +25,7 @@ from bika.lims.utils import formatDecimalMark
 from bika.lims.utils import to_utf8
 from bika.lims.utils.analysis import format_uncertainty
 from bika.lims import api
-from senaite.app.supermodel import SuperModel as BaseModel
+from senaite.core.supermodel import SuperModel as BaseModel
 from senaite.impress import logger
 from senaite.impress.decorators import returns_super_model
 

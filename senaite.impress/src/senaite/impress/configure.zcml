@@ -88,10 +88,19 @@
       layer="senaite.impress.interfaces.ILayer"
       />
 
+  <!-- JavaScripts Helper View -->
+  <browser:page
+      for="*"
+      name="javascripts_view"
+      class=".javascripts.JavaScriptsView"
+      permission="zope.Public"
+      layer="senaite.impress.interfaces.ILayer"
+      />
+
   <!-- Generic Model -->
   <adapter
       for="*"
-      factory="senaite.app.supermodel.SuperModel"
+      factory="senaite.core.supermodel.SuperModel"
       />
 
   <!-- HTML/PDF Publisher Utility -->
@@ -137,38 +146,10 @@
       type="senaite.impress.reports"
       />
 
-  <!-- Static directory for js, css and image resources -->
-  <plone:static
+  <!-- Static resource directory -->
+  <browser:resourceDirectory
+      name="senaite.impress.static"
       directory="static"
-      type="plone"
-      name="senaite.impress.static"
-      />
-
-  <!-- Viewlet Manager -->
-  <browser:viewletManager
-      name="senaite.impress.htmlhead"
-      provides=".interfaces.ISenaiteImpressHtmlHead"
-      permission="zope2.View"
-      class="plone.app.viewletmanager.manager.BaseOrderedViewletManager"
-      />
-
-  <!-- Static Resources Viewlet -->
-  <browser:viewlet
-      name="senaite.impress.static"
-      manager=".interfaces.ISenaiteImpressHtmlHead"
-      class=".resources.ResourcesViewlet"
-      permission="zope2.View"
-      template="static/resources.pt"
-      layer="senaite.impress.interfaces.ILayer"
-      />
-
-  <!-- Favicon Viewlet -->
-  <browser:viewlet
-      name="plone.links.favicon"
-      manager=".interfaces.ISenaiteImpressHtmlHead"
-      class="senaite.core.browser.viewlets.favicon.FaviconViewlet"
-      permission="zope2.View"
-      layer="senaite.impress.interfaces.ILayer"
       />
 
   <!-- Generic Setup *INSTALL* Profile -->

@@ -37,7 +37,7 @@ one document.
 Installation
 ============
 
-Please follow the installations instructions for `Plone 5`_ and
+Please follow the installations instructions for `Plone 4`_ and
 `senaite.lims`_.
 
 To install SENAITE IMPRESS, you have to add `senaite.impress` into the
@@ -45,16 +45,19 @@ To install SENAITE IMPRESS, you have to add `senaite.impress` into the
 `buildout.cfg`::
 
    [buildout]
-   index = https://pypi.org/simple/
-   extends = https://dist.plone.org/release/5.2-latest/versions.cfg
+   parts =
+       instance
+   extends =
+       http://dist.plone.org/release/4.3.19/versions.cfg
    find-links =
-       https://dist.plone.org/release/5.2-latest/
-       https://dist.plone.org/thirdparty/
+       http://dist.plone.org/release/4.3.19
+       http://dist.plone.org/thirdparty
    eggs =
        Plone
+       Pillow
        senaite.lims
+       senaite.impress
    zcml =
-   eggs-directory = ${buildout:directory}/eggs
 
    [instance]
    recipe = plone.recipe.zope2instance
@@ -64,6 +67,11 @@ To install SENAITE IMPRESS, you have to add `senaite.impress` into the
        ${buildout:eggs}
    zcml =
        ${buildout:zcml}
+
+   [versions]
+   setuptools =
+   zc.buildout =
+
 
 **Note**
 
@@ -88,9 +96,9 @@ Installation Requirements
 
 The following versions are required for SENAITE IMPRESS:
 
--  Plone 5.2.1
--  senaite.lims >= 2.x
+-  Plone 4.3.19
+-  senaite.lims >= 1.3.0
 
 
-.. _Plone 5: https://docs.plone.org/manage/installing/installation.html
+.. _Plone 4: https://docs.plone.org/4/en/manage/installing/index.html
 .. _senaite.lims: https://github.com/senaite/senaite.lims#installation

@@ -15,7 +15,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Copyright 2018-2021 by it's authors.
+# Copyright 2018-2020 by it's authors.
 # Some rights reserved, see README and LICENSE.
 
 import json
@@ -24,7 +24,7 @@ import time
 from functools import wraps
 
 from bika.lims import api
-from senaite.app.supermodel.interfaces import ISuperModel
+from senaite.core.supermodel.interfaces import ISuperModel
 from senaite.impress import logger
 from zope.component import queryAdapter
 
@@ -70,7 +70,7 @@ def returns_super_model(func):
 
     def to_super_model(obj):
         # avoid circular imports
-        from senaite.app.supermodel import SuperModel
+        from senaite.core.supermodel import SuperModel
 
         # Object is already a SuperModel, return immediately
         if isinstance(obj, SuperModel):
