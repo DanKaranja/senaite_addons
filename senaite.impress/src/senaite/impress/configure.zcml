@@ -157,7 +157,7 @@
       name="default"
       title="SENAITE IMPRESS"
       directory="profiles/default"
-      description="HTML to PDF report engine for SENAITE"
+      description="Ilara's HTML to PDF report engine for SENAITE"
       post_handler="senaite.impress.setuphandlers.post_install"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
@@ -167,7 +167,7 @@
       name="uninstall"
       title="SENAITE IMPRESS"
       directory="profiles/uninstall"
-      description="HTML to PDF report engine for SENAITE"
+      description="Ilara's HTML to PDF report engine for SENAITE"
       post_handler="senaite.impress.setuphandlers.post_uninstall"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
