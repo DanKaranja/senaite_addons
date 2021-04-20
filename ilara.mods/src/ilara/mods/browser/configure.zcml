@@ -24,5 +24,12 @@
         template="templates/training.pt"
         permission="zope2.View"
         />
+    <browser:page
+        name="demoview"
+        for="*"
+        template="demoview/training.pt"
+        permission="zope2.View"
+        />
+
 
 </configure>
