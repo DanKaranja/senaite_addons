@@ -240,7 +240,7 @@
   </tal:render>
 
   <!-- ALERTS -->
-  <tal:render condition="python:True">
+  <!-- <tal:render condition="python:True">
     <div class="row section-alerts no-gutters">
       <div class="w-100 mb-2">
         <div class="alert alert-danger" tal:condition="model/is_invalid">
@@ -257,7 +257,7 @@
         </div>
       </div>
     </div>
-  </tal:render>
+  </tal:render> -->
 
   <!-- PATIENT INFO -->
   <tal:render condition="patient">
@@ -405,23 +405,23 @@
             <td class="label" i18n:translate="">Sample Point</td>
             <td tal:content="model/SamplePoint/title|nothing"></td>
           </tr> -->
-          <tr>
+          <!-- <tr>
             <td class="label" i18n:translate="">Date Collected</td>
             <td tal:content="python:view.to_localized_time(model.DateSampled)"></td>
-          </tr>
+          </tr> -->
           <tr>
             <td class="label" i18n:translate="">Date Received</td>
             <td tal:content="python:view.to_localized_time(model.DateReceived)"></td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td class="label" i18n:translate="">Date Verified</td>
             <td tal:content="python:view.to_localized_time(model.get_transition_date('bika_ar_workflow', 'verified'))"></td>
-          </tr>
+          </tr> -->
           <tr>
             <td class="label" i18n:translate="">Date Published</td>
             <td tal:content="python:view.to_localized_time(model.DatePublished)"></td>
           </tr>
-          <tr tal:condition="reporter">
+          <!-- <tr tal:condition="reporter">
             <td class="label" i18n:translate="">Published by</td>
             <td>
               <span tal:content="reporter/fullname|reporter/username"/>
@@ -431,7 +431,7 @@
                     tal:attributes="href string:mailto:${email}"></a>)
               </tal:email>
             </td>
-          </tr>
+          </tr> -->
           <tr tal:condition="python: batch and batch.BatchLabels">
             <td class="label" i18n:translate="">Batch Labels</td>
             <td tal:content="structure python:', '.join(batch.BatchLabels)"></td>
@@ -627,7 +627,7 @@
   <tal:render condition="python:True">
     <div class="row section-signatures no-gutters">
       <div class="w-100">
-        <h1 i18n:translate="">Responsibles</h1>
+        <h1 i18n:translate="">Lab Technologists</h1>
         <table class="table table-sm table-condensed">
           <tr>
             <tal:manager repeat="manager python:model.managers">
@@ -649,7 +649,7 @@
                 </div>
               </td>
             </tal:manager>
-            <tal:reporter define="reporter python:view.current_user" condition="reporter">
+            <!-- <tal:reporter define="reporter python:view.current_user" condition="reporter">
               <td style="border:none">
                 <div class="label" i18n:translate="">Published by</div>
                 <div>
@@ -661,7 +661,7 @@
                   </tal:email>
                 </div>
               </td>
-            </tal:reporter>
+            </tal:reporter> -->
           </tr>
         </table>
       </div>
@@ -669,7 +669,7 @@
   </tal:render>
 
   <!-- DISCREETER -->
-  <tal:render condition="python:True"
+  <!-- <tal:render condition="python:True"
               define="laboratory python:view.laboratory;
                       contact model/Contact">
     <div class="row section-discreeter no-gutters">
@@ -714,7 +714,7 @@
         </div>
       </div>
     </div>
-  </tal:render>
+  </tal:render> -->
 
   <!-- CUSTOM FOOTER -->
   <tal:render condition="python:footer">
@@ -744,8 +744,6 @@
             <div>
               <span i18n:translate="">Phone</span>:
               <span tal:content="laboratory/Phone">Lab Phone Number</span>
-              • <span i18n:translate="">Fax</span>:
-                <span tal:content="laboratory/Fax">Lab Fax Number</span>
               • <a href="#" tal:attributes="href string:mailto:${laboratory/EmailAddress}">
                 <span tal:content="laboratory/EmailAddress">Lab Email</span>
               </a>
