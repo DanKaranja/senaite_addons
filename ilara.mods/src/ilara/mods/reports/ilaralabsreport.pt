@@ -145,11 +145,11 @@
       <table class="table table-sm table-condensed w-100">
         <colgroup>
           <!-- Client Address -->
-          <col style="width: 40%;">
+          <col style="width: 50%;">
           <!-- Lab Address -->
-          <col style="width: 40%">
+          <col style="width: 50%">
           <!-- Accreditation Logo -->
-          <col style="width: 20%">
+          <!-- <col style="width: 20%"> -->
         </colgroup>
         <tr>
           <td>
