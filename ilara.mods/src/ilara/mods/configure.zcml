@@ -43,13 +43,13 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-  
+
   <!-- Report resource directory -->
   <plone:static
       directory="reports"
       type="senaite.impress.reports"/>
-
- <!-- View for Single Reports -->
+ 
+  <!--
   <adapter
       for="*
            *
@@ -59,7 +59,6 @@
       provides="senaite.impress.interfaces.IReportView"
       permission="zope2.View"/>
 
-  <!-- View for Multi Reports -->
   <adapter
       for="*
            *
@@ -68,5 +67,6 @@
       factory=".reportview.MyMultiReportView"
       provides="senaite.impress.interfaces.IMultiReportView"
       permission="zope2.View"/>
+  -->
 
 </configure>
