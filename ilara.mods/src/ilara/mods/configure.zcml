@@ -23,7 +23,7 @@
       name="default"
       title="ilara.mods"
       directory="profiles/default"
-      description="Installs the ilara.mods add-on."
+      description="Installs the ilara.mods add-on. This add-on is a repository for all modification to Senaite Ilara has made"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
       />
@@ -32,7 +32,7 @@
       name="uninstall"
       title="ilara.mods (uninstall)"
       directory="profiles/uninstall"
-      description="Uninstalls the ilara.mods add-on."
+      description="Uninstalls the ilara.mods add-on.  This add-on is a repository for all modification to Senaite Ilara has made"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.uninstall"
       />
@@ -43,5 +43,30 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  
+  <!-- Report resource directory -->
+  <plone:static
+      directory="reports"
+      type="senaite.impress.reports"/>
+
+ <!-- View for Single Reports -->
+  <adapter
+      for="*
+           *
+           ilara.mods.interfaces.IIlaraModsLayer"
+      name="AnalysisRequest"
+      factory=".reportview.MySingleReportView"
+      provides="senaite.impress.interfaces.IReportView"
+      permission="zope2.View"/>
+
+  <!-- View for Multi Reports -->
+  <adapter
+      for="*
+           *
+           ilara.mods.interfaces.IIlaraModsLayer"
+      name="AnalysisRequest"
+      factory=".reportview.MyMultiReportView"
+      provides="senaite.impress.interfaces.IMultiReportView"
+      permission="zope2.View"/>
 
 </configure>
