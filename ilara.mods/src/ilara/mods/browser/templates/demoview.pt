@@ -16,7 +16,7 @@
                                   'subjects':('design', 'diazo', 'xslt')}
                                 ]">
     <tr>
-        <th>Title</th>
+        <th>Title (Changed)</th>
         <th>Topics</th>
     </tr>
     <tr tal:repeat="talk talks">
