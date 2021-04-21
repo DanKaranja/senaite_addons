@@ -1,6 +1,0 @@
-[report]
-include =
-    src/ilara/*
-omit =
-    */test*
-    */upgrades/*
