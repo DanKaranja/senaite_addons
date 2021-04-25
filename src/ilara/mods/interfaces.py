@@ -9,3 +9,7 @@ from senaite.lims.interfaces import ISenaiteLIMS
 
 class IIlaraModsLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
+
+
+class IRoutineAnalysis(Interface):
+    """For Dynamic Analysis Specifications"""
