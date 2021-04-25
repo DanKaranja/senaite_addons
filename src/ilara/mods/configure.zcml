@@ -45,13 +45,13 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <adapter
-      for="ilara.mods.interfaces.IRoutineAnalysis"
+      for="my.lims.interfaces.IRoutineAnalysis"
       factory=".dynamicresultsrange.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 
   <class class="bika.lims.content.analysis.Analysis">
-    <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
+    <implements interface="my.lims.interfaces.IRoutineAnalysis" />
   </class>
 
   <!-- Report resource directory -->
