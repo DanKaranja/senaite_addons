@@ -45,7 +45,9 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <adapter
-      for="ilara.mods.interfaces.IRoutineAnalysis"
+      for="*
+           *
+           ilara.mods.interfaces.IRoutineAnalysis"
       factory=".dynamicresultsrange.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
@@ -53,6 +55,12 @@
   <class class="bika.lims.content.analysis.Analysis">
     <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
   </class>
+
+
+
+
+
+
 
   <!-- Report resource directory -->
   <plone:static
