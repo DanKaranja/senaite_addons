@@ -46,7 +46,7 @@ class DynamicResultsRange(object):
 
         # Find a match by age and sex
         for range in ranges:
-            if range.get("age") == age and range.get("sex") == sex:
+            if range.get("sex") == sex:
                 return range
 
         # No dynamic specification found for this analysis and patient
