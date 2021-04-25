@@ -3,6 +3,7 @@
 
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from bika.lims.interfaces import IBikaLIMS
+from zope.interface import Interface
 from senaite.impress.interfaces import ILayer as ISenaiteIMPRESS
 from senaite.lims.interfaces import ISenaiteLIMS
 
