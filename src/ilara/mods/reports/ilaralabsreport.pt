@@ -389,9 +389,7 @@
           <tr>
             <td style="width:20%" class="label" i18n:translate="">Patient</td>
             <td>
-              <a tal:content="patient/Title"
-                 <!-- tal:attributes="href patient/absolute_url;"> -->
-              </a>
+              <a tal:content="patient/Title"> </a>
             </td>
           </tr>
           <tr>
@@ -464,8 +462,7 @@
             <td class="label" i18n:translate="">Client Patient ID</td>
             <td>
               <a tal:condition="patient/ClientPatientID"
-                 tal:content="patient/ClientPatientID"
-                 <!-- tal:attributes="href patient/absolute_url"></a> -->
+                 tal:content="patient/ClientPatientID"></a>
             </td>
           </tr>
           <!-- <tr tal:condition="batch">
@@ -487,18 +484,17 @@
           <tr tal:condition="patient">
             <td class="label" i18n:translate="">Patient ID</td>
             <td>
-              <a tal:content="patient/getId"
-                 <!-- tal:attributes="href patient/absolute_url"></a> -->
+              <a tal:content="patient/getId"></a>
             </td>
           </tr>
-          <tr tal:condition="batch">
+          <!-- <tr tal:condition="batch">
             <td class="label" i18n:translate="">Case ID</td>
             <td>
               <a tal:content="batch/getId"
                  tal:attributes="href batch/absolute_url">
               </a>
             </td>
-          </tr>
+          </tr> -->
           <!-- <tr>
             <td style="width:20%" class="label" i18n:translate="">Sample ID</td>
             <td>
