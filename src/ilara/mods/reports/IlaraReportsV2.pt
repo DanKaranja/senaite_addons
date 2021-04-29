@@ -194,12 +194,12 @@
           <tr>
               <td style="border:none">
                 <!-- PATIENT INFO -->
+                <h1 i18n:translate="">Parient Information</h1>
                 <tal:render condition="patient">
                     <tr>
                         <td style="width:20%" class="label" i18n:translate="">Patient</td>
                         <td>
-                        <a tal:content="patient/Title"
-                            tal:attributes="href patient/absolute_url;">
+                        <a tal:content="patient/Title">
                         </a>
                         </td>
                     </tr>
@@ -216,68 +216,62 @@
                     </tr>
                 </tal:render>
               </td>
+              <td style="border:none">
+                <!-- Sample Information -->
+                <tal:render condition="python:True"
+                            define="client model/Client;
+                                    batch model/Batch;
+                                    patient model/Patient;
+                                    reporter python:view.current_user;
+                                    specification model/Specification;
+                                    publication_specification model/PublicationSpecification;
+                                    spec python:publication_specification or specification;">
+                    <h1 i18n:translate="">Sample Information</h1>
+                    <tr tal:condition="patient">
+                        <td class="label" i18n:translate="">Client Patient ID</td>
+                        <td>
+                        <a tal:condition="patient/ClientPatientID"
+                            tal:content="patient/ClientPatientID"></a>
+                        </td>
+                    </tr>
+                    <tr tal:condition="patient">
+                        <td class="label" i18n:translate="">Patient ID</td>
+                        <td>
+                        <a tal:content="patient/getId"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%" class="label" i18n:translate="">Sample ID</td>
+                        <td>
+                        <a tal:content="model/getId">
+                        </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" i18n:translate="">Sample Type</td>
+                        <td tal:content="model/SampleType/title|nothing"></td>
+                    </tr>
+                    <tr>
+                        <td class="label" i18n:translate="">Date Received</td>
+                        <td tal:content="python:view.to_localized_time(model.DateReceived)"></td>
+                    </tr>
+                    <tr>
+                        <td class="label" i18n:translate="">Date Verified</td>
+                        <td tal:content="python:view.to_localized_time(model.get_transition_date('bika_ar_workflow', 'verified'))"></td>
+                    </tr>
+                    <tr>
+                        <td class="label" i18n:translate="">Date Published</td>
+                        <td tal:content="python:view.to_localized_time(model.DatePublished)"></td>
+                    </tr>
+                </tal:render>              
+              </td>
           </tr>
         </table>
       </div>
     </div>
   </tal:render>
 
-  <!-- Sample Information -->
-  <tal:render condition="python:True"
-              define="client model/Client;
-                      batch model/Batch;
-                      patient model/Patient;
-                      reporter python:view.current_user;
-                      specification model/Specification;
-                      publication_specification model/PublicationSpecification;
-                      spec python:publication_specification or specification;">
-    <div class="row section-summary no-gutters">
-      <div class="w-100">
 
-        <h1 i18n:translate="">Sample Information</h1>
-        <table class="table table-sm table-condensed">
-          <tr tal:condition="patient">
-            <td class="label" i18n:translate="">Client Patient ID</td>
-            <td>
-              <a tal:condition="patient/ClientPatientID"
-                 tal:content="patient/ClientPatientID"
-                 tal:attributes="href patient/absolute_url"></a>
-            </td>
-          </tr>
-          <tr tal:condition="patient">
-            <td class="label" i18n:translate="">Patient ID</td>
-            <td>
-              <a tal:content="patient/getId"></a>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:20%" class="label" i18n:translate="">Sample ID</td>
-            <td>
-              <a tal:content="model/getId"
-                 tal:attributes="href model/absolute_url;">
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="label" i18n:translate="">Sample Type</td>
-            <td tal:content="model/SampleType/title|nothing"></td>
-          </tr>
-          <tr>
-            <td class="label" i18n:translate="">Date Received</td>
-            <td tal:content="python:view.to_localized_time(model.DateReceived)"></td>
-          </tr>
-          <tr>
-            <td class="label" i18n:translate="">Date Verified</td>
-            <td tal:content="python:view.to_localized_time(model.get_transition_date('bika_ar_workflow', 'verified'))"></td>
-          </tr>
-          <tr>
-            <td class="label" i18n:translate="">Date Published</td>
-            <td tal:content="python:view.to_localized_time(model.DatePublished)"></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </tal:render>
 
 
   <!-- RESULTS -->
