@@ -236,7 +236,7 @@
             <td style="border:none;" class="align-top pr-2">
                 <!-- Left Table -->
                 <!-- PATIENT INFO -->
-                <h1 i18n:translate="">Parient Information</h1>
+                <h1 i18n:translate="">Patient Information</h1>
                 
                 <table class="table table-sm table-condensed">
                     <tal:render condition="patient">
