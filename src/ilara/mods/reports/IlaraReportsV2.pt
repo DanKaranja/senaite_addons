@@ -288,13 +288,13 @@
             <table class="table table-sm table-condensed">
               <colgroup>
                 <!-- Category -->
-                <col style="width: 35%;">
+                <col style="width: 20%;">
                 <!-- Result -->
                 <col style="width: 20%">
                 <!-- Unit -->
                 <col style="width: 20%">
                 <!-- Range -->
-                <col style="width: 15%">
+                <col style="width: 20%">
                 <!-- Out of Range -->
                 <col style="width: 10%">
               </colgroup>
@@ -455,8 +455,8 @@
               • <span tal:content="laboratory/PhysicalAddress/country">Lab Country</span>
             </div>
             <div>
-              <strong tal:content="laboratory/Name">Published by</strong>:
-              <span tal:content="reporter/fullname">Reporter/span>
+              <strong i18n:translate="">Published by</strong>:
+              <span tal:content="reporter/fullname">Reporter</span>
               <span i18n:translate="">Phone</span>:
               <span tal:content="laboratory/Phone">Lab Phone Number</span>
               • <a href="#" tal:attributes="href string:mailto:${laboratory/EmailAddress}">
