@@ -419,14 +419,6 @@
                 </div>
               </td>
             </tal:manager>
-            <tal:reporter define="reporter python:view.current_user">
-              <td style="border:none">
-                <div class="label" i18n:translate="">Published by</div>
-                <div>
-                  <span tal:content="reporter/fullname|reporter/username"></span>
-                </div>
-              </td>
-            </tal:reporter>
           </tr>
         </table>
       </div>
