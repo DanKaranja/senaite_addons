@@ -210,13 +210,6 @@
                                         specification model/Specification;
                                         publication_specification model/PublicationSpecification;
                                         spec python:publication_specification or specification;">
-                        <tr tal:condition="patient">
-                            <td class="label" i18n:translate="">Client Patient ID</td>
-                            <td class="field">
-                            <a tal:condition="patient/ClientPatientID"
-                                tal:content="patient/ClientPatientID"></a>
-                            </td>
-                        </tr>
                         <tr>
                             <td class="label" i18n:translate="">Sample ID</td>
                             <td class="field" tal:content="model/getId"></td>
@@ -247,6 +240,13 @@
                 
                 <table class="table table-sm table-condensed">
                     <tal:render condition="patient">
+                        <tr>
+                            <td class="label" i18n:translate="">Client Patient ID</td>
+                            <td class="field">
+                            <a tal:condition="patient/ClientPatientID"
+                                tal:content="patient/ClientPatientID"></a>
+                            </td>
+                        </tr>
                         <tr>
                             <td class="label" i18n:translate="">Patient</td>
                             <td class="field" tal:content="patient/Title"></td>
