@@ -243,14 +243,7 @@
                         </tr>
                         <tr>
                             <td class="label" i18n:translate="">Published by</td>
-                            <td>
-                            <span tal:content="reporter/fullname|reporter/username"/>
-                            <tal:email tal:condition="reporter/email|nothing"
-                                        tal:define="email reporter/email|nothing">
-                                (<a tal:content="email"
-                                    tal:attributes="href string:mailto:${email}"></a>)
-                            </tal:email>
-                            </td>
+                            <td class="field" tal:content="reporter/fullname"></td>
                         </tr>                        
                     </tal:render>
                 </table>            
