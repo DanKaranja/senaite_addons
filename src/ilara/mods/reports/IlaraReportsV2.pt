@@ -196,12 +196,12 @@
             <col style="width:50%"/>
           </colgroup>
           <tr>
-            <td>
+            <td style="border:none;" class="align-top pl-2">
                 <!-- Right Table -->
                 <!-- Sample Information -->
                 <h1 i18n:translate="">Sample Information</h1>
                 
-                <table class="table table-sm table-condensed ml-1">
+                <table class="table table-sm table-condensed">
                     <tal:render condition="python:True"
                                 define="client model/Client;
                                         batch model/Batch;
@@ -233,7 +233,7 @@
                     </tal:render>
                 </table>            
             </td>
-            <td>
+            <td style="border:none;" class="align-top pr-2">
                 <!-- Left Table -->
                 <!-- PATIENT INFO -->
                 <h1 i18n:translate="">Parient Information</h1>
