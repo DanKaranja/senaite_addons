@@ -114,15 +114,15 @@
   <tal:render condition="python:True">
     <div class="row section-header no-gutters">
       <!-- Header Table -->
-      <div class="w-100 mb-2">
+      <div class="w-100">
         <table class="w-100 mb-0 noborder">
           <colgroup>
-            <col style="width:50%"/>
-            <col style="width:50%;"/>
+            <col style="width:75%"/>
+            <col style="width:25%;"/>
           </colgroup>
           <tr>
             <!-- Header Left -->
-            <td class="align-left text-right">
+            <td class="align-left text-left">
               <img class="logo"
                    tal:attributes="src python:view.get_resource_url('logo_print.png')"/>
             </td>
