@@ -457,13 +457,10 @@
             <div>
               <strong i18n:translate="">Published by</strong>:
               <span tal:content="reporter/fullname">Reporter</span>
-              <span i18n:translate="">Phone</span>:
-              <span tal:content="laboratory/Phone">Lab Phone Number</span>
+              • <span i18n:translate="">Phone</span>:
+                <span tal:content="laboratory/Phone">Lab Phone Number</span>
               • <a href="#" tal:attributes="href string:mailto:${laboratory/EmailAddress}">
                 <span tal:content="laboratory/EmailAddress">Lab Email</span>
-              </a>
-              • <a href="#" tal:attributes="href laboratory/LabURL">
-                <span tal:content="laboratory/LabURL">Lab URL</span>
               </a>
             </div>
           </td>
