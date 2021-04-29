@@ -191,6 +191,10 @@
     <div class="row section-info no-gutters">
       <div class="w-100">
         <table class="table table-sm table-condensed">
+          <colgroup>
+            <col style="width:50%"/>
+            <col style="width:50%"/>
+          </colgroup>
           <tr>
               <td style="border:none">
                 <!-- PATIENT INFO -->
