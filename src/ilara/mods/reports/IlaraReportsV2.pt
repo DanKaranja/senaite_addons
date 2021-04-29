@@ -196,7 +196,7 @@
             <col style="width:50%"/>
           </colgroup>
           <tr>
-            <td style="border:none;" class="align-top pl-2">
+            <td>
                 <!-- Right Table -->
                 <!-- Sample Information -->
                 <h1 i18n:translate="">Sample Information</h1>
@@ -233,7 +233,7 @@
                     </tal:render>
                 </table>            
             </td>
-            <td style="border:none;" class="align-top pr-2">
+            <td>
                 <!-- Left Table -->
                 <!-- PATIENT INFO -->
                 <h1 i18n:translate="">Parient Information</h1>
