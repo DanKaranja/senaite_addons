@@ -198,9 +198,10 @@
           <tr>
             <td style="border:none;" class="align-top pr-2">
                 <!-- Left Table -->
+                <!-- PATIENT INFO -->
+                <h1 i18n:translate="">Parient Information</h1>
+                
                 <table class="table table-sm table-condensed">
-                    <!-- PATIENT INFO -->
-                    <h1 i18n:translate="">Parient Information</h1>
                     <tal:render condition="patient">
                         <tr>
                             <td class="label" i18n:translate="">Patient</td>
@@ -222,8 +223,9 @@
             </td>
             <td style="border:none;" class="align-top pl-2">
                 <!-- Right Table -->
-                <table class="table table-sm table-condensed ml-1"
-                    <!-- Sample Information -->
+                <!-- Sample Information -->
+                <h1 i18n:translate="">Sample Information</h1>
+                <table class="table table-sm table-condensed ml-1">
                     <tal:render condition="python:True"
                                 define="client model/Client;
                                         batch model/Batch;
@@ -232,7 +234,6 @@
                                         specification model/Specification;
                                         publication_specification model/PublicationSpecification;
                                         spec python:publication_specification or specification;">
-                        <h1 i18n:translate="">Sample Information</h1>
                         <tr tal:condition="patient">
                             <td class="label" i18n:translate="">Client Patient ID</td>
                             <td class="field">
@@ -265,7 +266,7 @@
                             <td class="field" tal:content="python:view.to_localized_time(model.DatePublished)"></td>
                         </tr>
                     </tal:render>
-                </table>              
+                </table>            
             </td>
           </tr>
         </table>
