@@ -162,6 +162,35 @@
           </tr>
         </table>
       </div>
+        <!-- PATIENT INFO -->
+    <tal:render condition="patient">
+        <div class="row section-summary no-gutters">
+            <div class="w-100">
+                <h1 i18n:translate="">Patient Information</h1>
+                <table class="table table-sm table-condensed">
+                    <tr>
+                        <td style="width:20%" class="label" i18n:translate="">Patient</td>
+                        <td>
+                        <a tal:content="patient/Title"
+                            tal:attributes="href patient/absolute_url;">
+                        </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%" class="label" i18n:translate="">Gender</td>
+                        <td tal:content="patient/Gender|None"></td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%" class="label" i18n:translate="">Date of Birth</td>
+                        <td tal:condition="python:patient.getBirthDate()">
+                        <span tal:content="python:view.to_localized_time(patient.getBirthDate(), long_format=0)"></span>
+                        <span tal:condition="patient/BirthDateEstimated|None" i18n:translate="">(estimated)</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </tal:render>
     </div>
   </tal:render>
   <!-- /HEADER -->
@@ -182,36 +211,6 @@
         <div class="alert alert-info" tal:condition="model/is_provisional">
           <div i18n:translate="">Provisional report</div>
         </div>
-      </div>
-    </div>
-  </tal:render>
-
-  <!-- PATIENT INFO -->
-  <tal:render condition="patient">
-    <div class="row section-summary no-gutters">
-      <div class="w-100">
-        <h1 i18n:translate="">Patient Information</h1>
-        <table class="table table-sm table-condensed">
-          <tr>
-            <td style="width:20%" class="label" i18n:translate="">Patient</td>
-            <td>
-              <a tal:content="patient/Title"
-                 tal:attributes="href patient/absolute_url;">
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:20%" class="label" i18n:translate="">Gender</td>
-            <td tal:content="patient/Gender|None"></td>
-          </tr>
-          <tr>
-            <td style="width:20%" class="label" i18n:translate="">Date of Birth</td>
-            <td tal:condition="python:patient.getBirthDate()">
-              <span tal:content="python:view.to_localized_time(patient.getBirthDate(), long_format=0)"></span>
-              <span tal:condition="patient/BirthDateEstimated|None" i18n:translate="">(estimated)</span>
-            </td>
-          </tr>
-        </table>
       </div>
     </div>
   </tal:render>
