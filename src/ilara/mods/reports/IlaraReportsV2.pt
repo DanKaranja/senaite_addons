@@ -65,7 +65,7 @@
      .report table th { border-bottom: 1px solid black; }
      .report table.range-table td { padding: 0 0.3rem 0 0; border: none; }
      .report .section-header h1 { font-size: 145%; }
-     .report .section-header img.logo { height: 100px; margin: 20px 0; }
+     .report .section-header img.logo { height: 100px; margin: 10px 0; }
      .report .barcode-hri { margin-top: -0.25em; font-size: 8pt; }
      .report .section-footer table td { border: none; }
      .report .section-footer {
@@ -196,38 +196,15 @@
             <col style="width:50%"/>
           </colgroup>
           <tr>
-            <td style="border:none;" class="align-top pr-2">
-                <!-- Left Table -->
-                <!-- PATIENT INFO -->
-                <h1 i18n:translate="">Parient Information</h1>
-                
-                <table class="table table-sm table-condensed">
-                    <tal:render condition="patient">
-                        <tr>
-                            <td class="label" i18n:translate="">Patient</td>
-                            <td class="field" tal:content="patient/Title"></td>
-                        </tr>
-                        <tr>
-                            <td class="label" i18n:translate="">Gender</td>
-                            <td class="field" tal:content="patient/Gender|None"></td>
-                        </tr>
-                        <tr>
-                            <td class="label" i18n:translate="">Date of Birth</td>
-                            <td class="field" tal:condition="python:patient.getBirthDate()">
-                            <span tal:content="python:view.to_localized_time(patient.getBirthDate(), long_format=0)"></span>
-                            <span tal:condition="patient/BirthDateEstimated|None" i18n:translate="">(estimated)</span>
-                            </td>
-                        </tr>
-                    </tal:render>
-                </table>
-            </td>
             <td style="border:none;" class="align-top pl-2">
                 <!-- Right Table -->
                 <!-- Sample Information -->
                 <h1 i18n:translate="">Sample Information</h1>
+                
                 <table class="table table-sm table-condensed ml-1">
                     <tal:render condition="python:True"
                                 define="client model/Client;
+                                        manager model/manager
                                         batch model/Batch;
                                         patient model/Patient;
                                         reporter python:view.current_user;
@@ -265,8 +242,44 @@
                             <td class="label" i18n:translate="">Date Published</td>
                             <td class="field" tal:content="python:view.to_localized_time(model.DatePublished)"></td>
                         </tr>
+                        <tr>
+                            <td class="label" i18n:translate="">Published by</td>
+                            <td>
+                            <span tal:content="reporter/fullname|reporter/username"/>
+                            <tal:email tal:condition="reporter/email|nothing"
+                                        tal:define="email reporter/email|nothing">
+                                (<a tal:content="email"
+                                    tal:attributes="href string:mailto:${email}"></a>)
+                            </tal:email>
+                            </td>
+                        </tr>                        
                     </tal:render>
                 </table>            
+            </td>
+            <td style="border:none;" class="align-top pr-2">
+                <!-- Left Table -->
+                <!-- PATIENT INFO -->
+                <h1 i18n:translate="">Parient Information</h1>
+                
+                <table class="table table-sm table-condensed">
+                    <tal:render condition="patient">
+                        <tr>
+                            <td class="label" i18n:translate="">Patient</td>
+                            <td class="field" tal:content="patient/Title"></td>
+                        </tr>
+                        <tr>
+                            <td class="label" i18n:translate="">Gender</td>
+                            <td class="field" tal:content="patient/Gender|None"></td>
+                        </tr>
+                        <tr>
+                            <td class="label" i18n:translate="">Date of Birth</td>
+                            <td class="field" tal:condition="python:patient.getBirthDate()">
+                            <span tal:content="python:view.to_localized_time(patient.getBirthDate(), long_format=0)"></span>
+                            <span tal:condition="patient/BirthDateEstimated|None" i18n:translate="">(estimated)</span>
+                            </td>
+                        </tr>
+                    </tal:render>
+                </table>
             </td>
           </tr>
         </table>
@@ -297,11 +310,11 @@
                 <!-- Category -->
                 <col style="width: 35%;">
                 <!-- Result -->
-                <col style="width: 30%">
+                <col style="width: 35%">
                 <!-- Unit -->
                 <col style="width: 15%">
                 <!-- Range -->
-                <col style="width: 15%">
+                <col style="width: 10%">
                 <!-- Out of Range -->
                 <col style="width: 5%">
               </colgroup>
@@ -397,33 +410,6 @@
     </div>
   </tal:render>
 
-  <!--  SIGNATURES -->
-  <tal:render condition="python:True">
-    <div class="row section-signatures no-gutters">
-      <div class="w-100">
-        <h1 i18n:translate="">Lab Technologist</h1>
-        <table class="table table-sm table-condensed">
-          <tr>
-            <tal:manager repeat="manager python:model.managers">
-              <td style="border:none">
-                <div>
-                  <img tal:condition="manager/Signature"
-                       tal:attributes="src string:${manager/absolute_url}/Signature" style="height:75px"/>
-                </div>
-                <div class="font-weight-bold">
-                  <span tal:content="manager/Fullname"></span>
-                </div>
-                <div>
-                  <span tal:content="manager/JobTitle"></span>
-                </div>
-              </td>
-            </tal:manager>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </tal:render>
-
   <!-- DISCREETER -->
   <tal:render condition="python:True"
               define="laboratory python:view.laboratory;
@@ -469,15 +455,6 @@
           Test results are at a <tal:block replace="confidence_level" i18n:name="lab_confidence"/>% confidence level
         </div> -->
       </div>
-    </div>
-  </tal:render>
-
-  <!-- CUSTOM FOOTER -->
-  <tal:render condition="python:footer">
-    <div class="row section-footer no-gutters">
-      <!-- Footer Line -->
-      <div id="footer-line"></div>
-      <div tal:replace="structure footer"/>
     </div>
   </tal:render>
 
