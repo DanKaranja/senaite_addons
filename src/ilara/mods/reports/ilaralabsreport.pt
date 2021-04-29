@@ -64,7 +64,7 @@
      .report table td, .report table th { border-top: 1px solid black; border-bottom: 1px solid black; }
      .report table th { border-bottom: 1px solid black; }
      .report table.range-table td { padding: 0 0.3rem 0 0; border: none; }
-     .report .section-header h1 { font-size: 120%; }
+     .report .section-header h1 { font-size: 175%; }
      .report .section-header img.logo { height: 100px; margin: 20px 0; }
      .report .barcode-hri { margin-top: -0.25em; font-size: 8pt; }
      .report .section-footer table td { border: none; }
@@ -122,13 +122,13 @@
           </colgroup>
           <tr>
             <!-- Header Left -->
+            <td class="align-middle text-left">
+              <h1 i18n:translate="">Analysis Report</h1>
+            </td>
+            <!-- Header Right -->
             <td class="align-middle text-right">
               <img class="logo"
                    tal:attributes="src python:view.get_resource_url('logo_print.png')"/>
-            </td>
-            <!-- Header Right -->
-            <td class="align-middle text-left">
-              <h1 i18n:translate="">Analysis Report</h1>
             </td>
           </tr>
         </table>
@@ -186,7 +186,7 @@
           </td>
           <td>
             <!-- Laboratory Info -->
-            <!-- <address class="laboratory-address">
+            <address class="laboratory-address">
               <div class="lab-title font-weight-bold">
                 <div tal:replace="laboratory/title|nothing"/>
               </div>
@@ -212,7 +212,7 @@
                 <a tal:attributes="href laboratory/LabURL"
                    tal:content="laboratory/LabURL"></a>
               </div>
-            </address> -->
+            </address>
           </td>
           <!-- <td>
             <div class="accreditation-logo text-left"
@@ -232,6 +232,7 @@
         </tr>
       </table>
     </div>
+    
     <!-- Clear Floats
          https://github.com/Kozea/WeasyPrint/issues/36
     -->
@@ -259,115 +260,6 @@
     </div>
   </tal:render> -->
 
-  <tal:render condition="python:len(collection)>0"
-              define="primarymodel python:collection[0];">
-
-    <div class="row section-info no-gutters">
-      <div class="w-100">
-        <!-- Client Info -->
-        <table class="table table-sm table-condensed">
-          <colgroup>
-            <col style="width:50%"/>
-            <col style="width:50%"/>
-          </colgroup>
-          <tr>
-            <td style="border:none;" class="align-top pr-2">
-              <!-- Left Table -->
-                <tal:render condition="patient">
-                  <div class="row section-summary no-gutters">
-                    <div class="w-100">
-                      <table class="table table-sm table-condensed">
-                        <tr>
-                          <td style="width:20%" class="label" i18n:translate="">Patient</td>
-                          <td>
-                            <a tal:content="patient/Title"></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width:20%" class="label" i18n:translate="">Gender</td>
-                          <td tal:content="patient/Gender|None"></td>
-                        </tr>
-                        <tr>
-                          <td style="width:20%" class="label" i18n:translate="">Date of Birth</td>
-                          <td tal:condition="python:patient.getBirthDate()">
-                            <span tal:content="python:view.to_localized_time(patient.getBirthDate(), long_format=0)"></span>
-                            <span tal:condition="patient/BirthDateEstimated|None" i18n:translate="">(estimated)</span>
-                          </td>
-                        </tr>
-                        
-                      </table>
-                    </div>
-                    </div>
-                  </tal:render>
-            </td>
-            <td style="border:none;" class="align-top pl-2">
-              <!-- Right Table -->
-                <tal:render condition="python:True"
-                            define="client model/Client;
-                                    batch model/Batch;
-                                    patient model/Patient;
-                                    reporter python:view.current_user;
-                                    specification model/Specification;
-                                    publication_specification model/PublicationSpecification;
-                                    spec python:publication_specification or specification;">
-                  <div class="row section-summary no-gutters">
-                    <div class="w-100">
-
-                      <h1 i18n:translate="">Sample Information</h1>
-                      <table class="table table-sm table-condensed">
-                        <tr tal:condition="patient">
-                          <td class="label" i18n:translate="">Client Patient ID</td>
-                          <td>
-                            <a tal:condition="patient/ClientPatientID"
-                              tal:content="patient/ClientPatientID">
-                              </a> 
-                          </td>
-                        </tr>
-                        <tr tal:condition="patient">
-                          <td class="label" i18n:translate="">Patient ID</td>
-                          <td>
-                            <a tal:content="patient/getId"></a>
-                          </td>
-                        </tr>
-                        <tr tal:condition="batch">
-                          <td class="label" i18n:translate="">Case ID</td>
-                          <td>
-                            <a tal:content="batch/getId"> </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="label" i18n:translate="">Sample Type</td>
-                          <td tal:content="model/SampleType/title|nothing"></td>
-                        </tr>
-                        <tr>
-                          <td class="label" i18n:translate="">Date Received</td>
-                          <td tal:content="python:view.to_localized_time(model.DateReceived)"></td>
-                        </tr>
-                        <tr>
-                          <td class="label" i18n:translate="">Date Published</td>
-                          <td tal:content="python:view.to_localized_time(model.DatePublished)"></td>
-                        </tr>
-                        <tr tal:condition="python: batch and batch.BatchLabels">
-                          <td class="label" i18n:translate="">Batch Labels</td>
-                          <td tal:content="structure python:', '.join(batch.BatchLabels)"></td>
-                        </tr>
-                      </table>
-                    </div>
-                  </div>
-                </tal:render>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <!-- Clear Floats
-           https://github.com/Kozea/WeasyPrint/issues/36
-      -->
-      <div class="clearfix"></div>
-    </div>
-  </tal:render>
-              
-
-
   <!-- PATIENT INFO -->
   <tal:render condition="patient">
     <div class="row section-summary no-gutters">
@@ -384,12 +276,13 @@
         </div> -->
 
         <h1 i18n:translate="">Patient Information</h1>
-        
         <table class="table table-sm table-condensed">
           <tr>
             <td style="width:20%" class="label" i18n:translate="">Patient</td>
             <td>
-              <a tal:content="patient/Title"> </a>
+              <a tal:content="patient/Title"
+                 tal:attributes="href patient/absolute_url;">
+              </a>
             </td>
           </tr>
           <tr>
@@ -410,7 +303,7 @@
                       tal:content="python:pid.get('Identifier','')"></span>
             </td>
           </tr> -->
-          <!-- <tr>
+          <tr>
             <td class="label" i18n:translate="">Address</td>
             <td tal:define="country_state python: patient.getCountryState() or {};
                             address python: country_state.get('address', '');
@@ -422,7 +315,7 @@
                             full_address python:', '.join(tokens);"
                 tal:content="full_address">
             </td>
-          </tr> -->
+          </tr>
           <!-- <tr>
             <td class="label" i18n:translate="">Phone (home)</td>
             <td tal:content="patient/HomePhone|Nothing"></td>
@@ -441,8 +334,8 @@
           </tr> -->
         </table>
       </div>
-      </div>
-    </tal:render>
+    </div>
+  </tal:render>
 
   <!-- Sample Information -->
   <tal:render condition="python:True"
@@ -462,17 +355,18 @@
             <td class="label" i18n:translate="">Client Patient ID</td>
             <td>
               <a tal:condition="patient/ClientPatientID"
-                 tal:content="patient/ClientPatientID"></a>
+                 tal:content="patient/ClientPatientID"
+                 tal:attributes="href patient/absolute_url"></a>
             </td>
           </tr>
-          <!-- <tr tal:condition="batch">
+          <tr tal:condition="batch">
             <td class="label" i18n:translate="">Client Case ID</td>
             <td>
               <a tal:condition="batch/ClientBatchID"
                  tal:content="batch/ClientBatchID"
                  tal:attributes="href batch/absolute_url"></a>
             </td>
-          </tr> -->
+          </tr>
           <!-- <tr>
             <td class="label" i18n:translate="">Client Sample ID</td>
             <td>
@@ -484,17 +378,18 @@
           <tr tal:condition="patient">
             <td class="label" i18n:translate="">Patient ID</td>
             <td>
-              <a tal:content="patient/getId"></a>
+              <a tal:content="patient/getId"
+                 tal:attributes="href patient/absolute_url"></a>
             </td>
           </tr>
-          <!-- <tr tal:condition="batch">
+          <tr tal:condition="batch">
             <td class="label" i18n:translate="">Case ID</td>
             <td>
               <a tal:content="batch/getId"
                  tal:attributes="href batch/absolute_url">
               </a>
             </td>
-          </tr> -->
+          </tr>
           <!-- <tr>
             <td style="width:20%" class="label" i18n:translate="">Sample ID</td>
             <td>
@@ -688,7 +583,7 @@
     </div>
   </tal:render> -->
 
-  <!-- ATTACHMENTS 
+  <!-- ATTACHMENTS -->
   <tal:render condition="python:True">
     <div class="row section-attachments no-gutters">
       <tal:attachment tal:define="attachments python:model.get_sorted_attachments('r');">
@@ -728,23 +623,23 @@
       </tal:attachment>
     </div>
   </tal:render>
-  -->
+
   <!--  SIGNATURES -->
   <tal:render condition="python:True">
     <div class="row section-signatures no-gutters">
       <div class="w-100">
-        <h1 i18n:translate="">Lab Technologist</h1>
+        <h1 i18n:translate="">Lab Technologists</h1>
         <table class="table table-sm table-condensed">
           <tr>
             <tal:manager repeat="manager python:model.managers">
               <td style="border:none">
-                <!-- <div>
+                <div>
                   <img tal:condition="manager/Signature"
                        tal:attributes="src string:${manager/absolute_url}/Signature" style="height:75px"/>
-                </div> -->
+                </div>
                 <div class="font-weight-bold">
-                  <!-- <span tal:content="manager/Salutation"></span>
-                  <span tal:condition="manager/Salutation">&nbsp;</span> -->
+                  <span tal:content="manager/Salutation"></span>
+                  <span tal:condition="manager/Salutation">&nbsp;</span>
                   <span tal:content="manager/Fullname"></span>
                 </div>
                 <div>
@@ -772,8 +667,7 @@
         </table>
       </div>
     </div>
-  </tal:render> 
-  
+  </tal:render>
 
   <!-- DISCREETER -->
   <!-- <tal:render condition="python:True"
@@ -844,7 +738,7 @@
             <div>
               <strong tal:content="laboratory/Name">Lab Name</strong>
               • <span tal:content="laboratory/PhysicalAddress/address">Lab Street and Number</span>
-                <span tal:content="laboratory/PhysicalAddress/zip">Lab ZIP</span>
+              • <span tal:content="laboratory/PhysicalAddress/zip">Lab ZIP</span>
                 <span tal:content="laboratory/PhysicalAddress/city">Lab City</span>
               • <span tal:content="laboratory/PhysicalAddress/country">Lab Country</span>
             </div>
