@@ -204,7 +204,6 @@
                 <table class="table table-sm table-condensed ml-1">
                     <tal:render condition="python:True"
                                 define="client model/Client;
-                                        manager model/manager
                                         batch model/Batch;
                                         patient model/Patient;
                                         reporter python:view.current_user;
