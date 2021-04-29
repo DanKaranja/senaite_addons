@@ -217,10 +217,6 @@
                                 tal:content="patient/ClientPatientID"></a>
                             </td>
                         </tr>
-                        <tr tal:condition="patient">
-                            <td class="label" i18n:translate="">Patient ID</td>
-                            <td class="field" tal:content="patient/getId"></td>
-                        </tr>
                         <tr>
                             <td class="label" i18n:translate="">Sample ID</td>
                             <td class="field" tal:content="model/getId"></td>
@@ -234,12 +230,8 @@
                             <td class="field" tal:content="python:view.to_localized_time(model.DateReceived)"></td>
                         </tr>
                         <tr>
-                            <td class="label" i18n:translate="">Date Verified</td>
-                            <td class="field" tal:content="python:view.to_localized_time(model.get_transition_date('bika_ar_workflow', 'verified'))"></td>
-                        </tr>
-                        <tr>
                             <td class="label" i18n:translate="">Date Published</td>
-                            <td class="field" tal:content="python:view.to_localized_time(model.DatePublished)"></td>
+                            <td class="field" tal:content="python:view.to_localized_time(model.get_transition_date('bika_ar_workflow', 'verified'))"></td>
                         </tr>
                         <tr>
                             <td class="label" i18n:translate="">Published by</td>
