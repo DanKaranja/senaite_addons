@@ -122,12 +122,12 @@
           </colgroup>
           <tr>
             <!-- Header Left -->
-            <td class="align-middle text-right">
+            <td class="align-left text-right">
               <img class="logo"
                    tal:attributes="src python:view.get_resource_url('logo_print.png')"/>
             </td>
             <!-- Header Right -->
-            <td class="align-middle text-left">
+            <td class="align-middle text-right">
                 <address class="client-address">
                     <div class="client-name font-weight-bold">
                         <div tal:replace="client/Name|nothing"></div>
