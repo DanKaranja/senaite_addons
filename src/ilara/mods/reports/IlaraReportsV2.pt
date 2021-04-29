@@ -291,13 +291,13 @@
             <table class="table table-sm table-condensed">
               <colgroup>
                 <!-- Category -->
-                <col style="width: 40%;">
+                <col style="width: 30%;">
                 <!-- Result -->
                 <col style="width: 30%">
                 <!-- Unit -->
                 <col style="width: 15%">
                 <!-- Range -->
-                <col style="width: 10%">
+                <col style="width: 20%">
                 <!-- Out of Range -->
                 <col style="width: 5%">
               </colgroup>
@@ -397,7 +397,7 @@
   <tal:render condition="python:True">
     <div class="row section-signatures no-gutters">
       <div class="w-100">
-        <h1 i18n:translate="">Responsibles</h1>
+        <h1 i18n:translate="">Lab Technologist</h1>
         <table class="table table-sm table-condensed">
           <tr>
             <tal:manager repeat="manager python:model.managers">
