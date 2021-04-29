@@ -288,13 +288,13 @@
             <table class="table table-sm table-condensed">
               <colgroup>
                 <!-- Category -->
-                <col style="width: 20%;">
+                <col style="width: 30%;">
                 <!-- Result -->
-                <col style="width: 30%">
+                <col style="width: 20%">
                 <!-- Unit -->
-                <col style="width: 30%">
+                <col style="width: 20%">
                 <!-- Range -->
-                <col style="width: 10%">
+                <col style="width: 20%">
                 <!-- Out of Range -->
                 <col style="width: 10%">
               </colgroup>
