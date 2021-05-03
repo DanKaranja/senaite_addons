@@ -43,14 +43,14 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-  <!--
+  
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView
-           bika.lims.interfaces.IAnalysisRequestsFolder"
+           *"
       factory=".IlaraCustomSamplesAdapter"
       provides="senaite.core.listing.interfaces.IListingViewAdapter"
       />
-  -->
+  
 
   <adapter
       for="*
