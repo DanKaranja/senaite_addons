@@ -42,6 +42,6 @@ class IlaraCustomSamplesAdapter(object):
         # Do your own stuff here. E.g., set the value to display for a given column
 
         sample = api.get_object(obj)
-        item["MyColumn"] = obj.getField("MyCustomAttribute").get(sample) or "Empty value"
+        item["Trigger SMS"] =  "Empty value"
         
         return item
