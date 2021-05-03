@@ -13,7 +13,7 @@ class IlaraCustomSamplesAdapter(object):
 
     def before_render(self):
         # Do your own stuff here. E.g., add search criteria in `contentFilter` variable
-        
+
         # Add a new filter status
         # draft_status = {
         #     "id": "draft",
@@ -28,15 +28,18 @@ class IlaraCustomSamplesAdapter(object):
         # self.listing.review_states.append(draft_status)
 
         # Add the column
-        self.listing.columns["MyColumn"] = {
-            "title": "My column",
-            "sortable": False,
-            "toggle": True,
-        }
+        
+        # self.listing.columns["MyColumn"] = {
+        #     "title": "My column",
+        #     "sortable": False,
+        #     "toggle": True,
+        # }
 
-        # Make the new column visible for all filter statuses
-        for filter in self.listing.review_states:
-            filter.update({"columns": self.listing.columns.keys()})
+        # # Make the new column visible for all filter statuses
+        # for filter in self.listing.review_states:
+        #     filter.update({"columns": self.listing.columns.keys()})
+
+
         return
 
     def folder_item(self, obj, item, index):
