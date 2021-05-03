@@ -56,16 +56,11 @@
     <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
   </class>
 
-  <subscriber
+  <adapter
     for="bika.lims.browser.analysisrequest.AnalysisRequestsView
          bika.lims.interfaces.IAnalysisRequestsFolder"
     provides="senaite.core.listing.interfaces.IListingViewAdapter"
     factory=".IlaraCustomSamplesAdapter" />
-
-
-
-
-
 
 
   <!-- Report resource directory -->
