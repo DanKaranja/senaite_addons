@@ -1,9 +1,12 @@
 from bika.lims import api
 from senaite.core.listing.interfaces import IListingView
 from senaite.core.listing.interfaces import IListingViewAdapter
+from zope.component import adapts
+from zope.interface import implements
 
 class IlaraCustomSamplesAdapter(object):
-
+    adapts(IListingView)
+    implements(IListingViewAdapter)
     # Order of priority of this subscriber adapter over others
     priority_order = 1000
 
