@@ -13,18 +13,19 @@ class IlaraCustomSamplesAdapter(object):
 
     def before_render(self):
         # Do your own stuff here. E.g., add search criteria in `contentFilter` variable
-                # Add a new filter status
-        draft_status = {
-            "id": "draft",
-            "title": "Draft",
-            "contentFilter": {
-                "review_state": "sample_draft",
-                "sort_on": "created",
-                "sort_order": "descending",
-            },
-            "columns": self.listing.columns.keys(),
-        }
-        self.listing.review_states.append(draft_status)
+        
+        # Add a new filter status
+        # draft_status = {
+        #     "id": "draft",
+        #     "title": "Draft",
+        #     "contentFilter": {
+        #         "review_state": "sample_draft",
+        #         "sort_on": "created",
+        #         "sort_order": "descending",
+        #     },
+        #     "columns": self.listing.columns.keys(),
+        # }
+        # self.listing.review_states.append(draft_status)
 
         # Add the column
         self.listing.columns["MyColumn"] = {
@@ -41,7 +42,6 @@ class IlaraCustomSamplesAdapter(object):
     def folder_item(self, obj, item, index):
         # Do your own stuff here. E.g., set the value to display for a given column
 
-        sample = api.get_object(obj)
-        item["Trigger SMS"] =  "Empty value"
+    
         
         return item
