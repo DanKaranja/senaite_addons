@@ -16,21 +16,21 @@ class IlaraCustomSamplesAdapter(object):
 
     def before_render(self):
         # Add a new filter status
-        draft_status = {
-            "id": "draft",
-            "title": "Draft",
-            "contentFilter": {
-                "review_state": "sample_draft",
-                "sort_on": "created",
-                "sort_order": "descending",
-            },
-            "columns": self.listing.columns.keys(),
-        }
-        self.listing.review_states.append(draft_status)
+        # draft_status = {
+        #     "id": "draft",
+        #     "title": "Draft",
+        #     "contentFilter": {
+        #         "review_state": "sample_draft",
+        #         "sort_on": "created",
+        #         "sort_order": "descending",
+        #     },
+        #     "columns": self.listing.columns.keys(),
+        # }
+        # self.listing.review_states.append(draft_status)
 
         # Add the column
-        self.listing.columns["MyColumn"] = {
-            "title": "My column",
+        self.listing.columns["sms_report"] = {
+            "title": "Dispatch SMS Report",
             "sortable": False,
             "toggle": True,
         }
@@ -41,5 +41,6 @@ class IlaraCustomSamplesAdapter(object):
 
     def folder_item(self, obj, item, index):
         sample = api.get_object(obj)
-        item["MyColumn"] = "Empty value"
+        sms_api_url = obj.getContactURL
+        item["sms_report"] = "<a href='%s'>Send SMS</a>" % (obj.getContactURL)
         return item
