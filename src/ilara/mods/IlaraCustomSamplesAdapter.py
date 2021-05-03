@@ -41,5 +41,5 @@ class IlaraCustomSamplesAdapter(object):
 
     def folder_item(self, obj, item, index):
         sample = api.get_object(obj)
-        # item["MyColumn"] = obj.getField("MyCustomAttribute").get(sample) or "Empty value"
+        item["MyColumn"] = "Empty value"
         return item
