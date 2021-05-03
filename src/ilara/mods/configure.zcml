@@ -43,6 +43,12 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <subscriber
+      for="bika.lims.browser.analysisrequest.AnalysisRequestsView
+           bika.lims.interfaces.IAnalysisRequestsFolder"
+      factory=".IlaraCustomSamplesAdapter"
+      provides="senaite.core.listing.interfaces.IListingViewAdapter"
+      />
 
   <adapter
       for="*
@@ -55,13 +61,6 @@
   <class class="bika.lims.content.analysis.Analysis">
     <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
   </class>
-
-  <adapter
-    for="bika.lims.browser.analysisrequest.AnalysisRequestsView
-         bika.lims.interfaces.IAnalysisRequestsFolder"
-    provides="senaite.core.listing.interfaces.IListingViewAdapter"
-    factory=".IlaraCustomSamplesAdapter" />
-
 
   <!-- Report resource directory -->
   <plone:static
