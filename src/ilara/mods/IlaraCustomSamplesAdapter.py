@@ -43,6 +43,6 @@ class IlaraCustomSamplesAdapter(object):
     def folder_item(self, obj, item, index):
         sample = api.get_object(obj)
         sms_api_url = obj.getContactURL
-        subtotal = obj.getBillableItems
+        subtotal = obj.getDateReceived
         item["sms_report"] = subtotal #"<a href='%s'>Send SMS: - %s</a>" % (sms_api_url,subtotal)
         return item
