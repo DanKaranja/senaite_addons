@@ -35,12 +35,13 @@ class IlaraCustomSamplesAdapter(object):
             "toggle": True,
         }
 
-        # Make the new column visible for all filter statuses
+        # Make the new column visible for only published results
         for filter in self.listing.review_states:
-            filter.update({"columns": self.listing.columns.keys()})
+            if filter.get("id") == "published":
+                filter.update({"columns": self.listing.columns.keys()})
 
     def folder_item(self, obj, item, index):
         sample = api.get_object(obj)
         sms_api_url = obj.getContactURL
-        item["sms_report"] = "<a href='%s'>Send SMS</a>" % (obj.getContactURL)
+        item["sms_report"] = "<a href='%s'>Send SMS</a>" % (sms_api_url)
         return item
