@@ -26,10 +26,12 @@
         permission="zope2.View"
         />      
 
-  <!-- Other overrides -->
-   <adapter
-        for="bika.lims.interfaces.IAnalysisRequest"
-        factory=".header_table.HeaderTableView"
-        provides="bika.lims.interfaces.IHeaderTableFieldRenderer"/> 
+  <browser:page
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="ilara_samples"
+      class=".ilara_samples"
+      permission="senaite.core.permissions.ManageAnalysisRequests"
+      layer="bika.lims.interfaces.IBikaLIMS"
+      />
 
 </configure>
