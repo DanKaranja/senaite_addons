@@ -29,20 +29,20 @@ class IlaraCustomSamplesAdapter(object):
         # self.listing.review_states.append(draft_status)
 
         # Add the column
-        self.listing.columns["sms_report"] = {
-            "title": "Dispatch SMS Report",
-            "sortable": False,
-            "toggle": True,
-        }
+        # self.listing.columns["sms_report"] = {
+        #     "title": "Dispatch SMS Report",
+        #     "sortable": False,
+        #     "toggle": True,
+        # }
 
-        # Make the new column visible for only published results
-        for filter in self.listing.review_states:
-            if filter.get("id") == "published":
-                filter.update({"columns": self.listing.columns.keys()})
+        # # Make the new column visible for only published results
+        # for filter in self.listing.review_states:
+        #     if filter.get("id") == "published":
+        #         filter.update({"columns": self.listing.columns.keys()})
 
     def folder_item(self, obj, item, index):
-        sample = api.get_object(obj)
-        sms_api_url = obj.getContactURL
-        subtotal = obj.getDateReceived
-        item["sms_report"] = subtotal #"<a href='%s'>Send SMS: - %s</a>" % (sms_api_url,subtotal)
+        # sample = api.get_object(obj)
+        # sms_api_url = obj.getContactURL
+        # subtotal = obj.getDateReceived
+        # item["sms_report"] = subtotal #"<a href='%s'>Send SMS: - %s</a>" % (sms_api_url,subtotal)
         return item
