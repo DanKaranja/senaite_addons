@@ -136,45 +136,45 @@ class InvoiceView(BrowserView):
         return self.context.plone_utils.addPortalMessage(message, level)
 
 
-class InvoicePrintView(InvoiceView):
-    """Print view w/o outer contents
-    """
-    template = ViewPageTemplateFile("templates/invoice_print.pt")
+# class InvoicePrintView(InvoiceView):
+#     """Print view w/o outer contents
+#     """
+#     template = ViewPageTemplateFile("templates/invoice_print.pt")
 
-    def __call__(self):
-        pdf = self.create_pdf()
-        filename = "{}.pdf".format(self.context.getId())
-        return self.download(pdf, filename)
+#     def __call__(self):
+#         pdf = self.create_pdf()
+#         filename = "{}.pdf".format(self.context.getId())
+#         return self.download(pdf, filename)
 
-    def create_pdf(self):
-        """Create the invoice PDF
-        """
-        invoice = self.template()
-        return createPdf(invoice)
+#     def create_pdf(self):
+#         """Create the invoice PDF
+#         """
+#         invoice = self.template()
+#         return createPdf(invoice)
 
-    def download(self, data, filename, content_type="application/pdf"):
-        """Download the PDF
-        """
-        self.request.response.setHeader(
-            "Content-Disposition", "inline; filename=%s" % filename)
-        self.request.response.setHeader("Content-Type", content_type)
-        self.request.response.setHeader("Content-Length", len(data))
-        self.request.response.setHeader("Cache-Control", "no-store")
-        self.request.response.setHeader("Pragma", "no-cache")
-        self.request.response.write(data)
+#     def download(self, data, filename, content_type="application/pdf"):
+#         """Download the PDF
+#         """
+#         self.request.response.setHeader(
+#             "Content-Disposition", "inline; filename=%s" % filename)
+#         self.request.response.setHeader("Content-Type", content_type)
+#         self.request.response.setHeader("Content-Length", len(data))
+#         self.request.response.setHeader("Cache-Control", "no-store")
+#         self.request.response.setHeader("Pragma", "no-cache")
+#         self.request.response.write(data)
 
 
-class InvoiceCreate(InvoicePrintView):
-    """Create the invoice
-    """
+# class InvoiceCreate(InvoicePrintView):
+#     """Create the invoice
+#     """
 
-    def __call__(self):
-        # Create the invoice object and link it to the current AR.
-        pdf = self.create_pdf()
-        invoice = self.context.createInvoice(pdf)
-        self.add_status_message(_("Invoice {} created").format(
-            api.get_id(invoice)))
+#     def __call__(self):
+#         # Create the invoice object and link it to the current AR.
+#         pdf = self.create_pdf()
+#         invoice = self.context.createInvoice(pdf)
+#         self.add_status_message(_("Invoice {} created").format(
+#             api.get_id(invoice)))
 
-        # Reload the page to see the the new fields
-        self.request.response.redirect(
-            "%s/invoice" % self.aq_parent.absolute_url())
+#         # Reload the page to see the the new fields
+#         self.request.response.redirect(
+#             "%s/invoice" % self.aq_parent.absolute_url())
