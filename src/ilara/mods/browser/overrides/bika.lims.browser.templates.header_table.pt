@@ -113,7 +113,14 @@
              class="context btn btn-sm btn-primary"
              type="submit"
              name="form.button.save"
-             value="Saver"
+             value="Save"
+             i18n:domain="plone"
+             i18n:attributes="value label_save;"/>
+      <input tal:condition="view/is_edit_allowed"
+             class="context btn btn-sm btn-primary"
+             type="submit"
+             name="form.button.sms"
+             value="Send SMS"
              i18n:domain="plone"
              i18n:attributes="value label_save;"/>
     </form>
