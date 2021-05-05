@@ -33,7 +33,7 @@ from zope.i18n.locales import locales
 from zope.interface import implements
 
 
-class InvoiceView(BrowserView):
+class IlaraToolsView(BrowserView):
     """Analyses Invoice View
     """
     implements(IInvoiceView)

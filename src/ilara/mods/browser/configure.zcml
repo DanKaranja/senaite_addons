@@ -29,7 +29,7 @@
    <browser:page
         for="bika.lims.interfaces.IAnalysisRequest"
         name="ilara"
-        class=".ilara_tools"
+        class=".ilara_tools.IlaraToolsView"
         permission="senaite.core.permissions.ManageAnalysisRequests"
         layer="bika.lims.interfaces.IBikaLIMS"
         />
