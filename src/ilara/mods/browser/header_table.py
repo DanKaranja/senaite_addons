@@ -11,8 +11,6 @@ from zope.interface import implements
 
 
 class HeaderTableView(BrowserView):
-
-    adapts(IHeaderTableFieldRenderer)
     
     def __call__(self):
         if "header_table_submitted" in self.request:
