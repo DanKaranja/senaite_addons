@@ -3,9 +3,17 @@ from bika.lims import api
 from bika.lims.browser import BrowserView
 from bika.lims.browser.header_table import HeaderTableView
 
+from bika.lims.interfaces import IHeaderTableFieldRenderer
+
+from zope.component import adapts
+from zope.interface import implements
 
 
-class HeaderTableView(HeaderTableView):
+
+class HeaderTableView(BrowserView):
+
+    adapts(IHeaderTableFieldRenderer)
+    
     def __call__(self):
         if "header_table_submitted" in self.request:
             schema = self.context.Schema()
