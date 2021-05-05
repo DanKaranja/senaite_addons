@@ -5,7 +5,7 @@ from bika.lims.browser.header_table import HeaderTableView
 
 
 
-class HeaderTableView(HeaderView):
+class HeaderTableView(HeaderTableView):
     def __call__(self):
         if "header_table_submitted" in self.request:
             schema = self.context.Schema()
