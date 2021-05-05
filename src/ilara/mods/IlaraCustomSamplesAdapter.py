@@ -29,11 +29,11 @@ class IlaraCustomSamplesAdapter(object):
         # self.listing.review_states.append(draft_status)
 
         # Add the column
-        # self.listing.columns["sms_report"] = {
-        #     "title": "Dispatch SMS Report",
-        #     "sortable": False,
-        #     "toggle": True,
-        # }
+        self.listing.columns["sms_report"] = {
+            "title": "Dispatch SMS Report",
+            "sortable": False,
+            "toggle": True,
+        }
 
         # # Make the new column visible for only published results
         # for filter in self.listing.review_states:
