@@ -27,7 +27,7 @@
         />      
 
    <browser:page
-        for="bika.lims.interfaces.IAnalysisRequest"
+        for="bika.lims.interfaces.IAnalysisRequestsFolder"
         name="ilara"
         class=".ilara_tools.IlaraToolsView"
         permission="senaite.core.permissions.ManageAnalysisRequests"
