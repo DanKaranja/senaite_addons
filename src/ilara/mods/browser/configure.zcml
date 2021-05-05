@@ -25,6 +25,12 @@
         template="templates/demoview.pt"
         permission="zope2.View"
         />      
+
+  <!-- Other overrides -->
+   <adapter
+        factory=".header_table"
+        provides="bika.lims.browser.header_table" />
+
  
         
 

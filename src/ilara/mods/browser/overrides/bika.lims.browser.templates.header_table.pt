@@ -120,9 +120,16 @@
              class="context btn btn-sm btn-primary"
              type="submit"
              name="form.button.sms"
-             value="Send SMS"
+             value="Send SMS Report"
              i18n:domain="plone"
              i18n:attributes="value label_save;"/>
+      <input tal:condition="view/is_edit_allowed"
+             class="context btn btn-sm btn-primary"
+             type="submit"
+             name="form.button.payment"
+             value="Request Payment"
+             i18n:domain="plone"
+             i18n:attributes="value label_save;"/>             
     </form>
   </body>
 </html>
