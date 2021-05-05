@@ -1,4 +1,4 @@
-<div id="invoice"
+<div id="ilara"
   i18n:domain="senaite.core"
   tal:define="sample view/sample;
               invoice sample/Invoice;">
@@ -14,7 +14,7 @@
     </style>
   </tal:css>
 
-  <h1 i18n:translate="">Invoice</h1>
+  <h1 i18n:translate="">Ilara Helper Functions</h1>
 
   <!-- Invoice Header -->
   <div class="row">

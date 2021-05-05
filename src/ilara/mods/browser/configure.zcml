@@ -26,12 +26,12 @@
         permission="zope2.View"
         />      
 
-  <browser:page
-      for="bika.lims.interfaces.IAnalysisRequest"
-      name="ilara_samples"
-      class=".ilara_samples"
-      permission="senaite.core.permissions.ManageAnalysisRequests"
-      layer="bika.lims.interfaces.IBikaLIMS"
-      />
+   <browser:page
+        for="bika.lims.interfaces.IAnalysisRequest"
+        name="ilara"
+        class=".ilara_tools"
+        permission="senaite.core.permissions.ManageAnalysisRequests"
+        layer="bika.lims.interfaces.IBikaLIMS"
+        />
 
 </configure>

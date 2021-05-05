@@ -38,7 +38,7 @@ class InvoiceView(BrowserView):
     """
     implements(IInvoiceView)
 
-    template = ViewPageTemplateFile("templates/ilara_samples.pt")
+    template = ViewPageTemplateFile("templates/ilara_tools_view.pt")
 
     def __init__(self, context, request):
         self.context = context
