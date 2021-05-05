@@ -1,5 +1,7 @@
 
-from bika.lims.browser.header_table import HeaderView
+from bika.lims import api
+from bika.lims.browser import BrowserView
+from bika.lims.browser.header_table import HeaderTableView
 
 
 
