@@ -27,6 +27,10 @@
         />      
 
   <!-- Other overrides -->
+   <adapter
+        for="bika.lims.interfaces.IAnalysisRequest"
+        factory=".header_table.HeaderTableView"
+        provides="bika.lims.interfaces.IHeaderTableFieldRenderer"/>  
 
  
         
