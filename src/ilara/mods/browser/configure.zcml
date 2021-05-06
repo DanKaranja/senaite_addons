@@ -17,7 +17,7 @@
       name="base_view"
       class=".AnalysisRequestView.AnalysisRequestViewView"
       permission="senaite.core.permissions.ManageAnalysisRequests"
-      layer="bika.lims.interfaces.IBikaLIMS"
+      layer="ilara.mods.interfaces.IIlaraModsLayer"
       />
 
   <!-- Publish static files -->
