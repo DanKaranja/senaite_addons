@@ -21,7 +21,7 @@ class SMSReport(object):
         phone_number = self.data.get("phone_number")
 
         log_info_sample = "Received Sample ID + Phone: {0},{1} ".format(sample, phone_number)
-        logger.info(error)
+        logger.info(log_info_sample)
 
         # Get pdf link
         # emails = self.phone_number()
