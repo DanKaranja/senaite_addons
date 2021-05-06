@@ -25,7 +25,7 @@ class SMSReport(object):
         # Send the emails
         # success = map(lambda e: self.send(e, subject, message), emails)
         # return self.get_Pdf(sample)
-        return true
+        return True
 
     def get_Pdf(self,sample):
         """Returns the pdf file of the sample report
