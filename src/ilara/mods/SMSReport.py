@@ -16,15 +16,16 @@ class SMSReport(object):
         """Send notifications to contacts
         """
         # Get query parameters
-        sample = data.get("sample")
-        phone_number = data.get("phone_number")
+        # sample = data.get("sample")
+        # phone_number = data.get("phone_number")
 
         # Get pdf link
         # emails = self.phone_number()
 
         # Send the emails
         # success = map(lambda e: self.send(e, subject, message), emails)
-        return self.get_Pdf(sample)
+        # return self.get_Pdf(sample)
+        return true
 
     def get_Pdf(self,sample):
         """Returns the pdf file of the sample report
