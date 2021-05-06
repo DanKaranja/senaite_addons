@@ -43,11 +43,11 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-  <adapter
-      name="ilara.mods.push.IlaraPushTasks"
-      factory=".IlaraPush.IlaraPushTasks"
-      provides="senaite.jsonapi.interfaces.IPushConsumer"
-      for="*" />
+    <adapter
+      for="*" 
+      name="ilara.mods.push.emailnotifier"
+      factory=".EmailNotifier"
+      provides="senaite.jsonapi.interfaces.IPushConsumer"/>
   
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView
