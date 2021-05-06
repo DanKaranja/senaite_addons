@@ -37,9 +37,9 @@ class SMSReport(object):
         # query = {"portal_type": "AnalysisRequest","title":sample}
         # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
 
-        results = api.search({"portal_type": "AnalysisRequest", "title":sample})
+        results = api.search({"portal_type": "AnalysisRequest"})
 
-        log_info_query_sample = "Pdf sample query for: {0} has returned {1} results".format(sample,len(results))
+        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} results".format(sample,len(results))
         logger.info(log_info_query_sample)
 
 
