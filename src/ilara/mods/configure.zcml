@@ -46,6 +46,7 @@
     <adapter
       for="*" 
       name="ilara.mods.push.emailnotifier"
+      provides="senaite.jsonapi.interfaces.IPushConsumer"
       factory=".EmailNotifier"/>
   
   <subscriber
