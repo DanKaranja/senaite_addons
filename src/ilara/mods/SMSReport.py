@@ -49,7 +49,7 @@ class SMSReport(object):
         # contacts = map(api.get_object, api.search(query, "portal_catalog"))
         # emails = map(lambda c: c.getEmailAddress(), contacts)
         # emails = filter(None, emails)
-        return AnalysisRequests[0].getSubtotal
+        return AnalysisRequests[0].getSubtotal()
 
     # def get_emails(self):
     #     """Returns the emails from all registered contacts
