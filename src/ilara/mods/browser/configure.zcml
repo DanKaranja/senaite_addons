@@ -12,6 +12,14 @@
       layer="ilara.mods.interfaces.IIlaraModsLayer"
       />
 
+  <browser:page
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="base_view"
+      class=".AnalysisRequestView.AnalysisRequestViewView"
+      permission="senaite.core.permissions.ManageAnalysisRequests"
+      layer="bika.lims.interfaces.IBikaLIMS"
+      />
+
   <!-- Publish static files -->
   <plone:static
       name="ilara.mods"
@@ -25,13 +33,5 @@
         template="templates/demoview.pt"
         permission="zope2.View"
         />      
-
-   <browser:page
-        for="bika.lims.interfaces.IAnalysisRequestsFolder"
-        name="ilara"
-        class=".ilara_tools.IlaraToolsView"
-        permission="senaite.core.permissions.ManageAnalysisRequests"
-        layer="bika.lims.interfaces.IBikaLIMS"
-        />
 
 </configure>
