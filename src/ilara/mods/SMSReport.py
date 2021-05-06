@@ -19,6 +19,9 @@ class SMSReport(object):
         sample = self.data.get("sample")
         phone_number = self.data.get("phone_number")
 
+        log_info_sample = "Received Sample ID + Phone: {0},{1} ".format(sample, phone_number)
+        logger.info(error)
+
         # Get pdf link
         # emails = self.phone_number()
 
@@ -30,8 +33,13 @@ class SMSReport(object):
     def get_Pdf(self,sample):
         """Returns the pdf file of the sample report
         """
-        query = {"portal_type": "AnalysisRequest","title":sample}
-        AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
+        # query = {"portal_type": "AnalysisRequest","title":sample}
+        # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
+
+        results = api.search({"portal_type": "AnalysisRequest", "title":sample})
+
+        log_info_query_sample = "Pdf sample query for: {0} has returned {1} results".format(sample,len(results))
+        logger.info(log_info_query_sample)
 
 
 
@@ -39,7 +47,7 @@ class SMSReport(object):
         # contacts = map(api.get_object, api.search(query, "portal_catalog"))
         # emails = map(lambda c: c.getEmailAddress(), contacts)
         # emails = filter(None, emails)
-        return len(AnalysisRequests)
+        return True
 
     # def get_emails(self):
     #     """Returns the emails from all registered contacts
