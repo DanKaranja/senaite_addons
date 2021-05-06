@@ -37,9 +37,10 @@ class SMSReport(object):
         # query = {"portal_type": "AnalysisRequest","title":sample}
         # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
 
-        results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
+        query = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
+        AnalysisRequests  = map(api.get_object, query)
 
-        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(results))
+        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(AnalysisRequests))
         logger.info(log_info_query_sample)
 
 
@@ -48,7 +49,7 @@ class SMSReport(object):
         # contacts = map(api.get_object, api.search(query, "portal_catalog"))
         # emails = map(lambda c: c.getEmailAddress(), contacts)
         # emails = filter(None, emails)
-        return results[0].getSubtotal
+        return AnalysisRequests[0].getSubtotal
 
     # def get_emails(self):
     #     """Returns the emails from all registered contacts
