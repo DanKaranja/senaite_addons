@@ -45,9 +45,9 @@
   <!-- -*- extra stuff goes here -*- -->
     <adapter
       for="*" 
-      name="ilara.mods.push.emailnotifier"
+      name="ilara.mods.push.smsreport"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
-      factory=".EmailNotifier"/>
+      factory=".SMSReport"/>
   
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView
