@@ -43,6 +43,11 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <adapter
+      name="ilara.mods.push.IlaraPushTasks"
+      factory=".IlaraPush.IlaraPushTasks"
+      provides="senaite.jsonapi.interfaces.IPushConsumer"
+      for="*" />
   
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView

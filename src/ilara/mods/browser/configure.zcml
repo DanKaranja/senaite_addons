@@ -12,12 +12,6 @@
       layer="ilara.mods.interfaces.IIlaraModsLayer"
       />
 
-  <adapter
-      name="ilara.mods.push.IlaraPushTasks"
-      factory=".IlaraPush"
-      provides="senaite.jsonapi.interfaces.IPushConsumer"
-      for="*" />
-
   <!-- Publish static files -->
   <plone:static
       name="ilara.mods"
