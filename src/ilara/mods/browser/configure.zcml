@@ -12,13 +12,11 @@
       layer="ilara.mods.interfaces.IIlaraModsLayer"
       />
 
-  <browser:page
-      for="bika.lims.interfaces.IAnalysisRequest"
-      name="base_view"
-      class=".AnalysisRequestView.AnalysisRequestViewView"
-      permission="senaite.core.permissions.ManageAnalysisRequests"
-      layer="bika.health.interfaces.IBikaHealth"
-      />
+  <adapter
+      name="ilara.mods.push.IlaraPushTasks"
+      factory=".IlaraPush.IlaraPushTasks"
+      provides="senaite.jsonapi.interfaces.IPushConsumer"
+      for="*" />
 
   <!-- Publish static files -->
   <plone:static
