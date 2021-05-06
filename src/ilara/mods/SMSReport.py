@@ -2,6 +2,7 @@ from bika.lims import api
 from bika.lims.api import mail as mailapi
 from senaite.jsonapi.interfaces import IPushConsumer
 from zope import interface
+from bika.lims import logger
 
 
 class SMSReport(object):
