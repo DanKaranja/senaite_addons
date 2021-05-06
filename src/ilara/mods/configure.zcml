@@ -47,7 +47,7 @@
       for="*" 
       name="ilara.mods.push.smsreport"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
-      factory=".SMSReport"/>
+      factory=".SMSReport.SMSReport"/>
   
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView
