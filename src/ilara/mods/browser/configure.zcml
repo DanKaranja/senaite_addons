@@ -14,7 +14,7 @@
 
   <adapter
       name="ilara.mods.push.IlaraPushTasks"
-      factory=".IlaraPush.IlaraPushTasks"
+      factory=".IlaraPush"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
       for="*" />
 
