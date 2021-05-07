@@ -43,9 +43,6 @@ class SMSReport(object):
         log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(ARReports))
         logger.info(log_info_query_sample)
 
-        message = log_info_query_sample
-        value = False
-
         if len(ARReports) > 0:
             try:
                 logger.info("Type of query result: {0}".format(query_results[0].type()))
