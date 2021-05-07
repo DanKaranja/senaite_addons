@@ -45,14 +45,19 @@ class SMSReport(object):
 
         if len(AnalysisRequests) > 0:
             try:
-                logger.info("Attempt 1: {0}".format(query_results[0]["creation_date"]))
+                logger.info("Attempt 1: {0}".format(query_results[0].review_state))
             except:
                 logger.info("Attempt 1 failed")
 
             try:
-                logger.info("Attempt 2: {0}".format(query_results[0].creation_date))
+                logger.info("Attempt 2: {0}".format(query_results[0].Patient.uid))
             except:
                 logger.info("Attempt 2: failed")
+            
+            try:
+                logger.info("Attempt 3: {0}".format(query_results[0].Patient))
+            except:
+                logger.info("Attempt 3: failed")
 
         # Patient = fields.get("Patient")
         # value = {"Sample Type": SampleTypeTitle.value}
