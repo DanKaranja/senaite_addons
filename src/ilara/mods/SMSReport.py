@@ -37,27 +37,32 @@ class SMSReport(object):
         # query = {"portal_type": "AnalysisRequest","title":sample}
         # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
 
-        query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
-        AnalysisRequests  = map(api.get_object, query_results)
+        aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
+        aReport_query_results = api.search({"portal_type": "ARReport","parent_id": "%s" % sample,"Complete":True})
 
-        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(AnalysisRequests))
-        logger.info(log_info_query_sample)
+        # AnalysisRequests  = map(api.get_object, query_results)
 
-        if len(AnalysisRequests) > 0:
+        log_info_query_aRequest = "Pdf aRequest query for '{0}' has returned {1} result(s)".format(sample,len(aRequest_query_results))
+        log_info_query_aReport = "Pdf aReport query for '{0}' has returned {1} result(s)".format(sample,len(aReport_query_results))
+
+        logger.info(log_info_query_aRequest)
+        logger.info(log_info_query_aReport)
+
+        if len(aRequest_query_results) > 0:
             try:
-                logger.info("Attempt 1: {0}".format(query_results[0].review_state))
+                logger.info("Attempt 1: {0}".format(aRequest_query_results[0].review_state))
             except Exception as e:
                 logger.info("Attempt 1 failed: {0}".format(e))
 
             try:
-                logger.info("Attempt 2: {0}".format(query_results[0]['Patient'].uid))
+                logger.info("Attempt 2: {0}".format(aRequest_query_results[0].MemberDiscount))
             except Exception as e:
                 logger.info("Attempt 2: failed: {0}".format(e))
             
-            try:
-                logger.info("Attempt 3: {0}".format(query_results[0]['Patient']))
-            except Exception as e:
-                logger.info("Attempt 3: failed: {0}".format(e))
+            # try:
+            #     logger.info("Attempt 3: {0}".format(query_results[0]['Patient']))
+            # except Exception as e:
+            #     logger.info("Attempt 3: failed: {0}".format(e))
 
         # Patient = fields.get("Patient")
         # value = {"Sample Type": SampleTypeTitle.value}
