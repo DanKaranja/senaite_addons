@@ -50,12 +50,12 @@ class SMSReport(object):
                 logger.info("Attempt 1 failed: {0}".format(e))
 
             try:
-                logger.info("Attempt 2: {0}".format(query_results[0].Patient.uid))
+                logger.info("Attempt 2: {0}".format(query_results[0]['Patient'].uid))
             except Exception as e:
                 logger.info("Attempt 2: failed: {0}".format(e))
             
             try:
-                logger.info("Attempt 3: {0}".format(query_results[0].Patient))
+                logger.info("Attempt 3: {0}".format(query_results[0]['Patient']))
             except Exception as e:
                 logger.info("Attempt 3: failed: {0}".format(e))
 
