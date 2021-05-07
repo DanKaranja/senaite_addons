@@ -47,7 +47,10 @@ class SMSReport(object):
         value = False
 
         if len(ARReports) > 0:
-            value = query_results[0].Patient.uid
+            fields = api.get_fields(ARReports[0])
+            SampleTypeTitle = fields.get("SampleTypeTitle")
+            Patient = fields.get("Patient")
+            value = {"patient":Patient, "Sample Type": SampleTypeTitle}
         
         response =  {"message":message,"value":value}
 
