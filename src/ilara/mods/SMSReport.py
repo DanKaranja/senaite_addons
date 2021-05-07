@@ -38,29 +38,21 @@ class SMSReport(object):
         # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
 
         query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
-        ARReports  = map(api.get_object, query_results)
+        AnalysisRequests  = map(api.get_object, query_results)
 
-        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(ARReports))
+        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(AnalysisRequests))
         logger.info(log_info_query_sample)
 
-        if len(ARReports) > 0:
+        if len(AnalysisRequests) > 0:
             try:
-                logger.info("Type of query result: {0}".format(type(query_results[0])))
+                logger.info("Attempt 1: {0}".format(query_results[0]["creation_date"]))
             except:
-                logger.info("Getting type of query result failed")
+                logger.info("Attempt 1 failed")
 
             try:
-                logger.info("Type of object: {0}".format(type(ARReports[0])))
+                logger.info("Attempt 2: {0}".format(query_results[0].creation_date))
             except:
-                logger.info("Getting type of object failed")
-
-            try:
-                fields = api.get_fields(ARReports[0])
-                SampleType = fields.get("SampleTypeTitle")
-
-                logger.info("Attempt 1: {0}".format(SampleType))
-            except:
-                logger.info("Attempt 1 Failed")
+                logger.info("Attempt 2: failed")
 
         # Patient = fields.get("Patient")
         # value = {"Sample Type": SampleTypeTitle.value}
