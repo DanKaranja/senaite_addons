@@ -45,12 +45,12 @@ class SMSReport(object):
 
         if len(ARReports) > 0:
             try:
-                logger.info("Type of query result: {0}".format(query_results[0].type()))
+                logger.info("Type of query result: {0}".format(type(query_results[0])))
             except:
                 logger.info("Getting type of query result failed")
 
             try:
-                logger.info("Type of object: {0}".format(ARReports[0].type()))
+                logger.info("Type of object: {0}".format(type(ARReports[0])))
             except:
                 logger.info("Getting type of object failed")
 
