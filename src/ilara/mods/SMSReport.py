@@ -38,15 +38,15 @@ class SMSReport(object):
         # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
 
         query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
-        # ARReports  = map(api.get_object, query_results)
+        ARReports  = map(api.get_object, query_results)
 
-        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(query_results))
+        log_info_query_sample = "Pdf sample query for '{0}' has returned {1} result(s)".format(sample,len(ARReports))
         logger.info(log_info_query_sample)
 
         message = log_info_query_sample
         value = False
 
-        if len(query_results) > 0:
+        if len(ARReports) > 0:
             value = query_results[0].Patient.uid
         
         response =  {"message":message,"value":value}
