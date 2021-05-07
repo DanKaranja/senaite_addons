@@ -42,22 +42,25 @@ class SMSReport(object):
 
         # AnalysisRequests  = map(api.get_object, query_results)
 
-        log_info_query_aRequest = "Pdf aRequest query for '{0}' has returned {1} result(s)".format(sample,len(aRequest_query_results))
-        log_info_query_aReport = "Pdf aReport query for '{0}' has returned {1} result(s)".format(sample,len(aReport_query_results))
+        log_info_query_aRequest = "aRequest query for '{0}' has returned {1} result(s)".format(sample,len(aRequest_query_results))
+        log_info_query_aReport = "aReport query for '{0}' has returned {1} result(s)".format(sample,len(aReport_query_results))
 
         logger.info(log_info_query_aRequest)
         logger.info(log_info_query_aReport)
 
-        if len(aRequest_query_results) > 0:
+        filtered_aReports =  filter(lambda n : n.parent_id == sample,aReport_query_results)
+        log_info_query_aReport = "aReport filter for '{0}' has returned {1} result(s)".format(sample,len(filtered_aReports))
+
+        if len(filtered_aReports) > 0:
             try:
-                logger.info("Attempt 1: {0}".format(aRequest_query_results[0].review_state))
+                logger.info("Attempt 1: {0}".format(filtered_aReports[0].url))
             except Exception as e:
                 logger.info("Attempt 1 failed: {0}".format(e))
 
-            try:
-                logger.info("Attempt 2: {0}".format(aRequest_query_results[0].MemberDiscount))
-            except Exception as e:
-                logger.info("Attempt 2: failed: {0}".format(e))
+            # try:
+            #     logger.info("Attempt 2: {0}".format(aRequest_query_results[0].MemberDiscount))
+            # except Exception as e:
+            #     logger.info("Attempt 2: failed: {0}".format(e))
             
             # try:
             #     logger.info("Attempt 3: {0}".format(query_results[0]['Patient']))
