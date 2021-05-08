@@ -30,7 +30,7 @@ class IlaraCustomSamplesAdapter(object):
 
         # Add the column
         self.listing.columns["sms_report"] = {
-            "title": "Dispatch SMS Report",
+            "title": "SMS Report",
             "sortable": False,
             "toggle": True,
         }

@@ -5,7 +5,7 @@ from zope import interface
 from bika.lims import logger
 
 
-class SMSReport(object):
+class IlaraFunctions(object):
     """Custom adapter for sending sms pdf reports to contacts
     """
     interface.implements(IPushConsumer)
@@ -17,10 +17,8 @@ class SMSReport(object):
         """Send notifications to contacts
         """
         # Get query parameters
-        sample = self.data.get("sample")
-        phone_number = self.data.get("phone_number")
 
-        log_info_sample = "Received Sample ID + Phone: {0},{1} ".format(sample, phone_number)
+        log_info_sample = "Received credentials for : {0}".format(firstname)
         logger.info(log_info_sample)
 
         # Get pdf link
@@ -28,34 +26,47 @@ class SMSReport(object):
 
         # Send the emails
         # success = map(lambda e: self.send(e, subject, message), emails)
-        return self.get_Pdf(sample)
+        return self.updateUser(username,password,firstname)
         # return True
 
-    def get_Pdf(self,sample):
-        """Returns the pdf file of the sample report
+    def updateUser(self,username,password,firstname):
+        """Create's user for patient to login
         """
+
+        portal_groups = api.get_tool("portal_groups")
+        portal_registration = api.get_tool("portal_registration")
+
+        bsc = api.get_tool('bika_setup_catalog')
+        exists = [o.getObject() for o in bsc(portal_type="LabContact") if o.getObject().getUsername()==username]
+        if exists:
+            error = "Lab Contact: username '{0}' already exists.".format(username)
+            logger.error(error)
+
+
+
+
         # query = {"portal_type": "AnalysisRequest","title":sample}
         # AnalysisRequests = map(api.get_object, api.search(query, "portal_catalog"))
 
-        aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
-        aReport_query_results = api.search({"portal_type": "ARReport","parent_id": "%s" % sample,"Complete":True})
+        # aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample,"Complete":True})
+        # aReport_query_results = api.search({"portal_type": "ARReport"})
 
         # AnalysisRequests  = map(api.get_object, query_results)
 
-        log_info_query_aRequest = "aRequest query for '{0}' has returned {1} result(s)".format(sample,len(aRequest_query_results))
-        log_info_query_aReport = "aReport query for '{0}' has returned {1} result(s)".format(sample,len(aReport_query_results))
+        # log_info_query_aRequest = "aRequest query for '{0}' has returned {1} result(s)".format(sample,len(aRequest_query_results))
+        # log_info_query_aReport = "aReport query for '{0}' has returned {1} result(s)".format(sample,len(aReport_query_results))
 
-        logger.info(log_info_query_aRequest)
-        logger.info(log_info_query_aReport)
+        # logger.info(log_info_query_aRequest)
+        # logger.info(log_info_query_aReport)
 
-        filtered_aReports =  filter(lambda n : n.parent_id == sample,aReport_query_results)
-        log_info_query_aReport = "aReport filter for '{0}' has returned {1} result(s)".format(sample,len(filtered_aReports))
+        # filtered_aReports =  filter(lambda n : n.parent_id == sample,aReport_query_results)
+        # log_info_query_aReport = "aReport filter for '{0}' has returned {1} result(s)".format(sample,len(filtered_aReports))
 
-        if len(filtered_aReports) > 0:
-            try:
-                logger.info("Attempt 1: {0}".format(filtered_aReports[0].url))
-            except Exception as e:
-                logger.info("Attempt 1 failed: {0}".format(e))
+        # if len(filtered_aReports) > 0:
+        #     try:
+        #         logger.info("Attempt 1: {0}".format(filtered_aReports[0].url))
+        #     except Exception as e:
+        #         logger.info("Attempt 1 failed: {0}".format(e))
 
             # try:
             #     logger.info("Attempt 2: {0}".format(aRequest_query_results[0].MemberDiscount))

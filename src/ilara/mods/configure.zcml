@@ -45,9 +45,9 @@
   <!-- -*- extra stuff goes here -*- -->
     <adapter
       for="*" 
-      name="ilara.mods.push.smsreport"
+      name="ilara.mods.push.task"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
-      factory=".SMSReport.SMSReport"/>
+      factory=".Functions.IlaraFunctions"/>
   
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView
@@ -60,7 +60,7 @@
       for="*
            *
            ilara.mods.interfaces.IRoutineAnalysis"
-      factory=".dynamicresultsrange.DynamicResultsRange"
+      factory=".DynamicResultsRange.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 
