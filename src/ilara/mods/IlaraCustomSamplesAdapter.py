@@ -48,5 +48,5 @@ class IlaraCustomSamplesAdapter(object):
 
         sampleid = 'SRM-0002'
         query_url = 'http://localhost:8081/smsreport?sampleid='+sampleid
-        item['sms_report'] = "<a href='%s'>Send SMS</a>" % query_url
+        item['sms_report'] = "<a href='%s' target='_blank'>Send SMS</a>" % query_url
         return item
