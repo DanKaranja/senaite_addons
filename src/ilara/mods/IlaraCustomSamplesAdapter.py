@@ -46,6 +46,6 @@ class IlaraCustomSamplesAdapter(object):
         # sms_api_url = obj.getContactURL
         # subtotal = obj.getDateReceived
         ar = sample.getAnalysisRequest()
-        query_url = 'http://localhost:8081/search?sampleid='+ar.Title()
+        query_url = 'http://localhost:8081/smspublish?sampleid='+ar.Title()
         item['sms_report'] = "<a href='%s' target='_blank'>Send SMS</a>" % query_url
         return item
