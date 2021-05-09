@@ -29,10 +29,10 @@ class IlaraCustomSamplesAdapter(object):
         # self.listing.review_states.append(draft_status)
 
         # Add the column
-        self.listing.columns["sms_report"] = {
-            "title": "SMS Report",
-            "sortable": False,
-            "toggle": True,
+        self.listing.columns['sms_report'] = {
+            'title': '(Ilara Tools) SMS Report',
+            'sortable': False,
+            'toggle': True,
         }
 
         # # Make the new column visible for only published results
@@ -41,8 +41,10 @@ class IlaraCustomSamplesAdapter(object):
         #         filter.update({"columns": self.listing.columns.keys()})
 
     def folder_item(self, obj, item, index):
-        # sample = api.get_object(obj)
+        sample = api.get_object(obj)
         # sms_api_url = obj.getContactURL
         # subtotal = obj.getDateReceived
-        # item["sms_report"] = subtotal #"<a href='%s'>Send SMS: - %s</a>" % (sms_api_url,subtotal)
+        sampleid = 'SRM-0002'
+        query_url = 'http://localhost:8081/smsreport?sampleid='+sampleid
+        item["sms_report"] = "<a href='%s'>Send SMS</a>" % (query_url,sampleid)
         return item
