@@ -50,7 +50,7 @@
       factory=".Functions.IlaraFunctions"/>
   
   <subscriber
-      for="bika.lims.browser.reports_listing.ReportsListingView
+      for="bika.lims.browser.publish.reports_listing.ReportsListingView
            *"
       factory=".IlaraCustomSamplesAdapter.IlaraCustomSamplesAdapter"
       provides="senaite.core.listing.interfaces.IListingViewAdapter"
