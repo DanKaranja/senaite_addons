@@ -60,7 +60,7 @@
       for="*
            *
            ilara.mods.interfaces.IRoutineAnalysis"
-      factory=".DynamicResultsRange"
+      factory=".DynamicSpecifications.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 
