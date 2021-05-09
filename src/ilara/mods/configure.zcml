@@ -64,9 +64,9 @@
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 
-  <class class="bika.lims.content.analysis.Analysis">
-    <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
-  </class>
+    <class class="bika.lims.content.analysis.Analysis">
+      <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
+    </class>
 
   <!-- Report resource directory -->
   <plone:static
