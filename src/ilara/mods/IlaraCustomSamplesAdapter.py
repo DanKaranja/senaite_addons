@@ -35,10 +35,11 @@ class IlaraCustomSamplesAdapter(object):
             'toggle': True,
         }
 
-        # # Make the new column visible for only published results
-        # for filter in self.listing.review_states:
-        #     if filter.get("id") == "published":
-        #         filter.update({"columns": self.listing.columns.keys()})
+        # Make the new column visible for only published results
+        for filter in self.listing.review_states:
+            filter.update({"columns": self.listing.columns.keys()})
+            # if filter.get("id") == "published":
+                
 
     def folder_item(self, obj, item, index):
         sample = api.get_object(obj)
@@ -47,5 +48,5 @@ class IlaraCustomSamplesAdapter(object):
 
         sampleid = 'SRM-0002'
         query_url = 'http://localhost:8081/smsreport?sampleid='+sampleid
-        item['sms_report'] = "<a href='%s'>Send SMS</a>" % (query_url)
+        item['sms_report'] = "<a href='%s'>Send SMS</a>" % query_url
         return item
