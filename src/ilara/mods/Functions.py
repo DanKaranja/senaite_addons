@@ -18,29 +18,47 @@ class IlaraFunctions(object):
         """
         # Get query parameters
 
-        log_info_sample = "Received credentials for : {0}".format(firstname)
-        logger.info(log_info_sample)
+        sample_id = data.get("sample_id")
 
         # Get pdf link
         # emails = self.phone_number()
 
         # Send the emails
         # success = map(lambda e: self.send(e, subject, message), emails)
-        return self.updateUser(username,password,firstname)
+        return self.returnBill(sample_id)
         # return True
 
-    def updateUser(self,username,password,firstname):
+    def returnBill(self,sample_id):
         """Create's user for patient to login
         """
 
-        portal_groups = api.get_tool("portal_groups")
-        portal_registration = api.get_tool("portal_registration")
+        aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
+        logger.info("Results: {0}".format(len(aRequest_query_results)))
 
-        bsc = api.get_tool('bika_setup_catalog')
-        exists = [o.getObject() for o in bsc(portal_type="LabContact") if o.getObject().getUsername()==username]
-        if exists:
-            error = "Lab Contact: username '{0}' already exists.".format(username)
-            logger.error(error)
+        if len(aRequest_query_results) > 0:
+            try:
+                logger.info("Attempt 1: {0}".format(aRequest_query_results[0].getSubtotal()))
+            except Exception as e:
+                logger.info("Attempt 1 failed: {0}".format(e))
+
+            try:
+                logger.info("Attempt 2: {0}".format(aRequest_query_results[0].getSubtotal))
+            except Exception as e:
+                logger.info("Attempt 2: failed: {0}".format(e))
+            
+            # try:
+            #     logger.info("Attempt 3: {0}".format(aRequest_query_results[0].getSubtotal))
+            # except Exception as e:
+            #     logger.info("Attempt 3: failed: {0}".format(e))
+
+        # portal_groups = api.get_tool("portal_groups")
+        # portal_registration = api.get_tool("portal_registration")
+
+        # bsc = api.get_tool('bika_setup_catalog')
+        # exists = [o.getObject() for o in bsc(portal_type="LabContact") if o.getObject().getUsername()==username]
+        # if exists:
+        #     error = "Lab Contact: username '{0}' already exists.".format(username)
+        #     logger.error(error)
 
 
 
