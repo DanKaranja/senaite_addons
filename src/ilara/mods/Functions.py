@@ -111,7 +111,7 @@ class IlaraFunctions(object):
         # contacts = map(api.get_object, api.search(query, "portal_catalog"))
         # emails = map(lambda c: c.getEmailAddress(), contacts)
         # emails = filter(None, emails)
-        return results
+        return {'results':results}
 
     # def get_emails(self):
     #     """Returns the emails from all registered contacts
