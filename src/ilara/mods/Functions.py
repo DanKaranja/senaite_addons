@@ -18,7 +18,7 @@ class IlaraFunctions(object):
         """
         # Get query parameters
 
-        sample_id = data.get("sample_id")
+        sample_id = self.data.get("sample_id")
 
         # Get pdf link
         # emails = self.phone_number()
