@@ -36,13 +36,14 @@ class IlaraFunctions(object):
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
         if len(aRequest_query_results) > 0:
+            sample = api.get_object(aRequest_query_results[0])
             try:
-                logger.info("Attempt 1: {0}".format(aRequest_query_results[0].getSubtotal()))
+                logger.info("Attempt 1: {0}".format(sample.getSubtotal()))
             except Exception as e:
                 logger.info("Attempt 1 failed: {0}".format(e))
 
             try:
-                logger.info("Attempt 2: {0}".format(aRequest_query_results[0].getSubtotal))
+                logger.info("Attempt 2: {0}".format(sample.getSubtotal))
             except Exception as e:
                 logger.info("Attempt 2: failed: {0}".format(e))
             
