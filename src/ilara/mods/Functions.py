@@ -18,34 +18,39 @@ class IlaraFunctions(object):
         """
         # Get query parameters
 
-        sample_id = self.data.get("sample_id")
+        # sample_id = self.data.get("sample_id")
 
         # Get pdf link
         # emails = self.phone_number()
 
         # Send the emails
         # success = map(lambda e: self.send(e, subject, message), emails)
-        return self.returnBill(sample_id)
+        return self.returnBills()
         # return True
 
-    def returnBill(self,sample_id):
+    def returnBills(self):
         """Create's user for patient to login
         """
 
-        aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
+        aRequest_query_results = api.search({"portal_type": "AnalysisRequest","Complete":True})
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
-        if len(aRequest_query_results) > 0:
-            sample = api.get_object(aRequest_query_results[0])
-            try:
-                logger.info("Attempt 1: {0}".format(sample.getSubtotal()))
-            except Exception as e:
-                logger.info("Attempt 1 failed: {0}".format(e))
+        results = []
 
-            try:
-                logger.info("Attempt 2: {0}".format(sample.getSubtotal))
-            except Exception as e:
-                logger.info("Attempt 2: failed: {0}".format(e))
+        if len(aRequest_query_results) > 0:
+
+            for sample_r in aRequest_query_results:
+                sample = api.get_object(sample_r)
+                sample_object  = {}
+
+                try:
+                    sample_object['title'] = sample.Title()
+                    sample_object['subtotal'] = sample.getSubtotal()
+                    logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
+                except Exception as e:
+                    logger.info("Failed to get sample object properties {0}".format(e))
+
+                results.append(sample_object)
             
             # try:
             #     logger.info("Attempt 3: {0}".format(aRequest_query_results[0].getSubtotal))
@@ -106,7 +111,7 @@ class IlaraFunctions(object):
         # contacts = map(api.get_object, api.search(query, "portal_catalog"))
         # emails = map(lambda c: c.getEmailAddress(), contacts)
         # emails = filter(None, emails)
-        return True
+        return results
 
     # def get_emails(self):
     #     """Returns the emails from all registered contacts
