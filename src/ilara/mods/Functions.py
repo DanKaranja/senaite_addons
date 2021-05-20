@@ -63,6 +63,9 @@ class IlaraFunctions(object):
                     logger.info("Failed to get sample object properties {0}".format(e))
 
                 results.append(sample_object)
+        
+        if len(results) > 0:
+            results.append({'status': 'success'})
 
         return {'results':results}
 
@@ -89,5 +92,8 @@ class IlaraFunctions(object):
                     logger.info("Failed to get sample object properties {0}".format(e))
 
                 results.append(sample_object)
+        
+        if len(results) > 0:
+            results.append({'status': 'success'})
                 
         return {'results':results}
