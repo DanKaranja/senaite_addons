@@ -58,7 +58,7 @@ class IlaraFunctions(object):
                 try:
                     sample_object['title'] = sample.Title()
                     sample_object['subtotal'] = sample.getSubtotal()
-                    logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
+                    # logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
                 except Exception as e:
                     logger.info("Failed to get sample object properties {0}".format(e))
 
