@@ -47,7 +47,7 @@ class IlaraFunctions(object):
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","Complete":True})
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
-        response = {'status': 'received'}
+        response = {'status': 'processed'}
         results = []
 
         if len(aRequest_query_results) > 0:
@@ -70,7 +70,7 @@ class IlaraFunctions(object):
         
         response.update({'results':results})
 
-        return results
+        return response
 
     def returnInvoiceAmount(self,sample_id):
         """Returns the emails from all registered contacts
@@ -79,7 +79,7 @@ class IlaraFunctions(object):
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
-        response = {'status': 'received'}
+        response = {'status': 'processed'}
         results = []
 
         if len(aRequest_query_results) > 0:
@@ -102,4 +102,4 @@ class IlaraFunctions(object):
         
         response.update({'results':results})
 
-        return results
+        return response
