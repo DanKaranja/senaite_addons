@@ -67,7 +67,7 @@ class IlaraFunctions(object):
         if len(results) > 0:
             results.append({'status': 'success'})
 
-        return {'results':results}
+        return results
 
     def returnInvoiceAmount(self,sample_id):
         """Returns the emails from all registered contacts
@@ -96,4 +96,4 @@ class IlaraFunctions(object):
         if len(results) > 0:
             results.append({'status': 'success'})
                 
-        return {'results':results}
+        return results
