@@ -47,6 +47,7 @@ class IlaraFunctions(object):
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","Complete":True})
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
+        response = {'status': 'received'}
         results = []
 
         if len(aRequest_query_results) > 0:
@@ -65,7 +66,9 @@ class IlaraFunctions(object):
                 results.append(sample_object)
         
         if len(results) > 0:
-            results.append({'status': 'success'})
+            response.update({'status': 'success'})
+        
+        response.update({'results':results})
 
         return results
 
@@ -76,6 +79,7 @@ class IlaraFunctions(object):
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
+        response = {'status': 'received'}
         results = []
 
         if len(aRequest_query_results) > 0:
@@ -94,6 +98,8 @@ class IlaraFunctions(object):
                 results.append(sample_object)
         
         if len(results) > 0:
-            results.append({'status': 'success'})
-                
+            response.update({'status': 'success'})
+        
+        response.update({'results':results})
+
         return results
