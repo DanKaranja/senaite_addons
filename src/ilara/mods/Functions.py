@@ -30,7 +30,7 @@ class IlaraFunctions(object):
         if sample_id != None:
             response.update(self.returnInvoiceAmount(sample_id))
         else:
-            response.update(self.returnBills)
+            response.update(self.returnBills())
 
         # Get pdf link
         # emails = self.phone_number()
