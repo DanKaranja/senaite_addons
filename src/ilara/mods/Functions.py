@@ -98,8 +98,6 @@ class IlaraFunctions(object):
             except Exception as e:
                 logger.info("Failed to get sample object properties {0}".format(e))
 
-            results.append(invoice_object)
-
             #Fetching patient details
 
             aRequest_cat_query_results = api.search({"id": "%s" % sample_id}, catalog="bika_catalog_analysisrequest_listing")
