@@ -90,8 +90,21 @@ class IlaraFunctions(object):
             patient_query_results = api.search({"portal_type": "Patient","id": "%s" % patient_id,"Complete":True})
 
             logger.info("PatientResults: {0}".format(len(patient_query_results)))
+            
+            if len(patient_query_results) >  0:
+                patient = api.get_object(patient_query_results[0])
+                patient_object  = {}
 
-            logger.info('Patient Mobile{0}'.format(patient_query_results[0]['MobilePhone']))
+                try:
+                    patient_object['MobilePhone'] = patient.getMobilePhone()
+
+                    logger.info('{0}'.format(patient.getMobilePhone()))
+                except Exception as e:
+                    logger.info("Failed to get patient object properties {0}".format(e))
+
+                results.append(patient_object)
+            
+
 
         
             logger.info("Analysis Request Results: {0}".format(len(aRequest_query_results)))
