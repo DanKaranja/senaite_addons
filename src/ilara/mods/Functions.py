@@ -82,14 +82,19 @@ class IlaraFunctions(object):
         response = {'status': 'processed'}
         results = []
 
+        logger.info("Analysis Request Catalog Results: {0}".format(len(aRequest_cat_query_results)))
+
         if len(aRequest_cat_query_results) > 0:
 
             patient_id = aRequest_cat_query_results[0].getPatientID
             patient_query_results = api.search({"portal_type": "Patient","id": "%s" % patient_id,"Complete":True})
-            logger.info('Patient Mobile{0}'.format(patient_query_results[0].MobilePhone))
+
+            logger.info("PatientResults: {0}".format(len(patient_query_results)))
+
+            logger.info('Patient Mobile{0}'.format(patient_query_results[0]['MobilePhone']))
 
         
-            logger.info("Results: {0}".format(len(aRequest_query_results)))
+            logger.info("Analysis Request Results: {0}".format(len(aRequest_query_results)))
 
             if len(aRequest_query_results) > 0:
 
