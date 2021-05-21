@@ -77,51 +77,50 @@ class IlaraFunctions(object):
         """
 
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
-        aRequest_cat_query_results = api.search({"id": "%s" % sample_id}, catalog="bika_catalog_analysisrequest_listing")
+        
 
         response = {'status': 'processed'}
         results = []
 
-        logger.info("Analysis Request Catalog Results: {0}".format(len(aRequest_cat_query_results)))
+        if len(aRequest_query_results) > 0:
+            invoice_object  = {}
 
-        if len(aRequest_cat_query_results) > 0:
+            #Fetching sample object
 
+            logger.info("Analysis Request Results: {0}".format(len(aRequest_query_results)))
+
+            sample = api.get_object(aRequest_query_results[0])
+
+            try:
+                invoice_object['title'] = sample.Title()
+                invoice_object['subtotal'] = sample.getSubtotal()
+                logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
+            except Exception as e:
+                logger.info("Failed to get sample object properties {0}".format(e))
+
+            results.append(invoice_object)
+
+            #Fetching patient details
+
+            aRequest_cat_query_results = api.search({"id": "%s" % sample_id}, catalog="bika_catalog_analysisrequest_listing")
+            logger.info("Analysis Request Catalog Results: {0}".format(len(aRequest_cat_query_results)))
+            
             patient_id = aRequest_cat_query_results[0].getPatientID
             patient_query_results = api.search({"portal_type": "Patient","id": "%s" % patient_id,"Complete":True})
 
-            logger.info("PatientResults: {0}".format(len(patient_query_results)))
+            logger.info("Patient Results: {0}".format(len(patient_query_results)))
             
-            if len(patient_query_results) >  0:
-                patient = api.get_object(patient_query_results[0])
-                patient_object  = {}
+            patient = api.get_object(patient_query_results[0])
 
-                try:
-                    patient_object['MobilePhone'] = patient.getMobilePhone()
+            try:
+                invoice_object['MobilePhone'] = patient.getMobilePhone()
+                invoice_object['FullName'] = patient.getFullname()
 
-                    logger.info('{0}'.format(patient.getMobilePhone()))
-                except Exception as e:
-                    logger.info("Failed to get patient object properties {0}".format(e))
+                logger.info('{0} - {1}'.format(patient.getFullname(),patient.getMobilePhone()))
+            except Exception as e:
+                logger.info("Failed to get patient object properties {0}".format(e))
 
-                results.append(patient_object)
-            
-
-
-        
-            logger.info("Analysis Request Results: {0}".format(len(aRequest_query_results)))
-
-            if len(aRequest_query_results) > 0:
-
-                sample = api.get_object(aRequest_query_results[0])
-                sample_object  = {}
-
-                try:
-                    sample_object['title'] = sample.Title()
-                    sample_object['subtotal'] = sample.getSubtotal()
-                    logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
-                except Exception as e:
-                    logger.info("Failed to get sample object properties {0}".format(e))
-
-                results.append(sample_object)
+            results.append(invoice_object)
                     
                     
         
