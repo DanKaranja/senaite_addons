@@ -78,16 +78,22 @@ class IlaraFunctions(object):
 
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
         aRequest_cat_query_results = api.search({"id": "%s" % sample_id}, catalog="bika_catalog_analysisrequest_listing")
-        logger.info("Results: {0}".format(len(aRequest_query_results)))
 
         response = {'status': 'processed'}
         results = []
-        if len(aRequest_query_results) > 0:
 
-            for sample_r in aRequest_query_results:
-                
-                sample = api.get_object(sample_r)
-                logger.info('Patient UID {0}'.format(aRequest_cat_query_results[0].getPatientUID))
+        if len(aRequest_cat_query_results) > 0:
+
+            patient_id = aRequest_cat_query_results[0].getPatientID
+            patient_query_results = api.search({"portal_type": "Patient","id": "%s" % patient_id,"Complete":True})
+            logger.info('Patient Mobile{0}'.format(patient_query_results[0].MobilePhone))
+
+        
+            logger.info("Results: {0}".format(len(aRequest_query_results)))
+
+            if len(aRequest_query_results) > 0:
+
+                sample = api.get_object(aRequest_query_results[0])
                 sample_object  = {}
 
                 try:
@@ -98,6 +104,8 @@ class IlaraFunctions(object):
                     logger.info("Failed to get sample object properties {0}".format(e))
 
                 results.append(sample_object)
+                    
+                    
         
         if len(results) > 0:
             response.update({'status': 'success'})
