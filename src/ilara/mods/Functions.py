@@ -81,12 +81,12 @@ class IlaraFunctions(object):
 
         response = {'status': 'processed'}
         results = []
-
         if len(aRequest_query_results) > 0:
 
             for sample_r in aRequest_query_results:
-                logger.info('Patient UID {0}'.format(sample_r.Patient.uid))
+                
                 sample = api.get_object(sample_r)
+                logger.info('Patient UID {0}'.format(sample.getPatientUID()))
                 sample_object  = {}
 
                 try:
