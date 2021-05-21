@@ -85,6 +85,7 @@ class IlaraFunctions(object):
         if len(aRequest_query_results) > 0:
 
             for sample_r in aRequest_query_results:
+                logger.info('Patient UID {0}'.format(sample_r['Patient']['uid']))
                 sample = api.get_object(sample_r)
                 sample_object  = {}
 
