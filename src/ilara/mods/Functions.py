@@ -77,6 +77,7 @@ class IlaraFunctions(object):
         """
 
         aRequest_query_results = api.search({"portal_type": "AnalysisRequest","id": "%s" % sample_id,"Complete":True})
+        aRequest_cat_query_results = api.search({"id": "%s" % sample_id}, catalog="bika_catalog_analysisrequest_listing")
         logger.info("Results: {0}".format(len(aRequest_query_results)))
 
         response = {'status': 'processed'}
@@ -86,7 +87,7 @@ class IlaraFunctions(object):
             for sample_r in aRequest_query_results:
                 
                 sample = api.get_object(sample_r)
-                logger.info('Patient UID {0}'.format(sample.getPatientUID()))
+                logger.info('Patient UID {0}'.format(aRequest_cat_query_results[0].getPatientUID))
                 sample_object  = {}
 
                 try:
