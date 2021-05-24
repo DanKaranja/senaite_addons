@@ -14,3 +14,8 @@ class IIlaraModsLayer(IDefaultBrowserLayer):
 
 class IRoutineAnalysis(Interface):
     """For Dynamic Analysis Specifications"""
+
+class IPayments(Interface):
+    """
+    Interface for the Payments class.
+    """
