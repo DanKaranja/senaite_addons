@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Init and utils."""
 from zope.i18nmessageid import MessageFactory
-from content import payments
+from content.payments import payments
 import config
 
 
