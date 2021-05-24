@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Init and utils."""
 from zope.i18nmessageid import MessageFactory
-from ilara.mods.content import payments
+from ilara.mods.content.payments import payments
 import ilara.mods.config
 
 
