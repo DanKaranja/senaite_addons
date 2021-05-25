@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Init and utils."""
 from zope.i18nmessageid import MessageFactory
-from ilara.mods.content.payments import payments
 import ilara.mods.config
 
 
@@ -9,6 +8,8 @@ _ = MessageFactory('ilara.mods')
 
 
 def initialize(context):
+
+    from ilara.mods.content.payments import payments
 
     content_types, constructors, ftis = process_types(
              listTypes(config.PROJECTNAME),
