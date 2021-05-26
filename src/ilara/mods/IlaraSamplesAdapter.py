@@ -45,8 +45,9 @@ class IlaraSamplesAdapter(object):
         sample = api.get_object(obj)
         # sms_api_url = obj.getContactURL
         # subtotal = obj.getDateReceived
-        ar = sample.getAnalysisRequest()
-        # query_url = 'http://35.190.90.81/payments?sampleid='+ar.Title()
-        query_url = 'http://localhost:8081/payments?sampleid='+ar.Title()
+        # ar = sample.getAnalysisRequest()
+        
+        # query_url = 'http://35.190.90.81/payments?sampleid='+sample.Title()
+        query_url = 'http://localhost:8081/payments?sampleid='+sample.Title()
         item['request_payment'] = "<a href='%s' target='_blank'>Request Payment</a>" % query_url
         return item
