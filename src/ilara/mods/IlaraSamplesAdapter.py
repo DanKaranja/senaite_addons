@@ -4,7 +4,7 @@ from senaite.core.listing.interfaces import IListingViewAdapter
 from zope.component import adapts
 from zope.interface import implements
 
-class IlaraCustomSamplesAdapter(object):
+class IlaraSamplesAdapter(object):
     adapts(IListingView)
     implements(IListingViewAdapter)
     # Order of priority of this subscriber adapter over others
@@ -29,8 +29,8 @@ class IlaraCustomSamplesAdapter(object):
         # self.listing.review_states.append(draft_status)
 
         # Add the column
-        self.listing.columns['sms_report'] = {
-            'title': 'SMS Report',
+        self.listing.columns['request_payment'] = {
+            'title': 'Request Payment',
             'sortable': False,
             'toggle': True,
         }
@@ -46,7 +46,7 @@ class IlaraCustomSamplesAdapter(object):
         # sms_api_url = obj.getContactURL
         # subtotal = obj.getDateReceived
         ar = sample.getAnalysisRequest()
-        query_url = 'http://35.190.90.81/smspublish?sampleid='+ar.Title()
-        # query_url = 'http://localhost:8081/smspublish?sampleid='+ar.Title()
-        item['sms_report'] = "<a href='%s' target='_blank'>Send SMS</a>" % query_url
+        # query_url = 'http://35.190.90.81/payments?sampleid='+ar.Title()
+        query_url = 'http://localhost:8081/payments?sampleid='+ar.Title()
+        item['request_payment'] = "<a href='%s' target='_blank'>Request Payment</a>" % query_url
         return item

@@ -1,1 +1,0 @@
-PROJECTNAME = "ilara.mods"
