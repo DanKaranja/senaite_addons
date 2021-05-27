@@ -22,7 +22,7 @@ class IlaraContentTypes(object):
 
         # self.data.get("sample_id")
 
-        item = createContentInContainer(folder, "payments", title=title)
+        item = api.create(portal.payments, "payments", title="Test Payments")
 
         return response
     
