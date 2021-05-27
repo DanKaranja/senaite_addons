@@ -1,6 +1,7 @@
 from bika.lims.interfaces import IDynamicResultsRange
 from bika.lims.interfaces.analysis import IRequestAnalysis
 from zope.interface import implementer
+from bika.lims import logger
 
 
 @implementer(IDynamicResultsRange)
@@ -40,6 +41,12 @@ class DynamicResultsRange(object):
         # We expect the xls to have the columns "keyword", "age" and "sex"
         keyword = self.analysis.getKeyword()
         ranges = dyn_spec.get_by_keyword().get(keyword)
+
+        og_range = specification.get_by_keyword().get(keyword)
+        fs = '%s - %s' % (og_range['min'], og_range['max'])
+        dfs = '%s - %s' % (ranges['min'], ranges['max'])
+        logger.info('fs')
+
         if not ranges:
             # No ranges defined for this analysis
             return {}
