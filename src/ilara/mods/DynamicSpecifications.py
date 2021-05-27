@@ -43,8 +43,8 @@ class DynamicResultsRange(object):
         ranges = dyn_spec.get_by_keyword().get(keyword)
 
         og_range = specification.get_by_keyword().get(keyword)
-        fs = '%s - %s' % (og_range['min'], og_range['max'])
-        dfs = '%s - %s' % (ranges['min'], ranges['max'])
+        fs = 'Original ranges: %s - %s' % (og_range['min'], og_range['max'])
+        dfs = 'Dynamic ranges: %s - %s' % (ranges['min'], ranges['max'])
         logger.info('fs')
 
         if not ranges:
