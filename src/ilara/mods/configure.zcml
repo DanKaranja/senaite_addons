@@ -70,9 +70,7 @@
       />
 
   <adapter
-      for="*
-           *
-           ilara.mods.interfaces.IRoutineAnalysis"
+      for="ilara.mods.interfaces.IRoutineAnalysis"
       factory=".DynamicSpecifications.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
@@ -82,9 +80,6 @@
     </class>
 
   <!-- Report resource directory -->
-  <plone:static
-      directory="impress/analysisrequest/model.py"
-      type="senaite.impress.analysisrequest.model"/>
   
   <plone:static
       directory="impress/reports"
