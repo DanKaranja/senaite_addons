@@ -11,7 +11,8 @@ Tell me what your product does
 Features
 --------
 
-- Can be bullet points
+- Modyfies Analysis Requests listing to include hook for payments
+- Modyfies Report listing to include hook for SMS reporting
 
 
 Examples

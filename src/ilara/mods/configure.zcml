@@ -47,7 +47,13 @@
       for="*" 
       name="ilara.mods.push.task"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
-      factory=".Functions.IlaraFunctions"/>
+      factory=".PushFunctions.IlaraFunctions"/>
+  
+    <adapter
+      for="*" 
+      name="ilara.mods.push.db"
+      provides="senaite.jsonapi.interfaces.IPushConsumer"
+      factory=".PushContentTypes.IlaraContentTypes"/>
   
   <subscriber
       for="bika.lims.browser.publish.reports_listing.ReportsListingView
