@@ -83,11 +83,11 @@
 
   <!-- Report resource directory -->
   <plone:static
-      directory="impress.analysisrequest"
+      directory="impress/analysisrequest"
       type="senaite.impress.analysisrequest"/>
   
   <plone:static
-      directory="impress.reports"
+      directory="impress/reports"
       type="senaite.impress.reports"/>
   <!--
   <adapter
