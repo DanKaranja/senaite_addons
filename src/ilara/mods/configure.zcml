@@ -82,11 +82,11 @@
     </class>
 
   <!-- Report resource directory -->
-  <!--
+  
   <plone:static
-      directory="reports"
-      type="senaite.impress.reports"/>
-
+      directory="impress"
+      type="senaite.impress"/>
+  <!--
   <adapter
       for="*
            *
