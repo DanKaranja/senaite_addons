@@ -61,14 +61,14 @@
       factory=".IlaraSamplesReportsAdapter.IlaraSamplesReportsAdapter"
       provides="senaite.core.listing.interfaces.IListingViewAdapter"
       />
-
+ <!--
   <subscriber
       for="bika.lims.browser.analysisrequest.AnalysisRequestsView
            *"
       factory=".IlaraSamplesAdapter.IlaraSamplesAdapter"
       provides="senaite.core.listing.interfaces.IListingViewAdapter"
       />
-  <!--
+ 
   <adapter
       for="ilara.mods.interfaces.IRoutineAnalysis"
       factory=".DynamicSpecifications.DynamicResultsRange"
