@@ -11,6 +11,7 @@ class DynamicResultsRange(object):
         self.analysis = analysis
 
     def __call__(self):
+        logger.info('Dynamic specifications')
         if not IRequestAnalysis.providedBy(self.analysis):
             # Cannot grab the patient from analyses not assigned to a Sample
             return {}
