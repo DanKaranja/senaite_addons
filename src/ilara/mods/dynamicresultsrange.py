@@ -8,10 +8,11 @@ from bika.lims import logger
 class DynamicResultsRange(object):
 
     def __init__(self, analysis):
+        logger.info('LFT1')
         self.analysis = analysis
 
     def __call__(self):
-        logger.info('Dynamic specifications')
+        logger.info('LFT2')
         if not IRequestAnalysis.providedBy(self.analysis):
             # Cannot grab the patient from analyses not assigned to a Sample
             return {}
