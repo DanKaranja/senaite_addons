@@ -42,10 +42,10 @@ class DynamicResultsRange(object):
         keyword = self.analysis.getKeyword()
         ranges = dyn_spec.get_by_keyword().get(keyword)
 
-        og_range = specification.get_by_keyword().get(keyword)
-        fs = 'Original ranges: %s - %s' % (og_range['min'], og_range['max'])
-        dfs = 'Dynamic ranges: %s - %s' % (ranges['min'], ranges['max'])
-        logger.info('fs')
+        # og_range = specification.get_by_keyword().get(keyword)
+        # fs = 'Original ranges: %s - %s' % (og_range['min'], og_range['max'])
+        # dfs = 'Dynamic ranges: %s - %s' % (ranges['min'], ranges['max'])
+        # logger.info('fs')
 
         if not ranges:
             # No ranges defined for this analysis
@@ -53,8 +53,8 @@ class DynamicResultsRange(object):
 
         # Find a match by age and sex
         for range in ranges:
-            if range.get("sex") == sex:
-                return range
+            return range
+                
 
         # No dynamic specification found for this analysis and patient
         return {}
