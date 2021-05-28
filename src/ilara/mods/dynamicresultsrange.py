@@ -32,10 +32,13 @@ class DynamicResultsRange(object):
             # No patient assigned for this sample, do nothing
             return {}
 
+        logger.info('Got patient')
+
         # Patient's age (in years)
         age = patient.getAge()
         # Patient's gender (male/female/dk)
         sex = patient.getGender()
+        logger.info('Got gender: '+sex)
 
         # Get the dynamic specification for this analysis by keyword
         # We expect the xls to have the columns "keyword", "age" and "sex"
