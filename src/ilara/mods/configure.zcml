@@ -68,7 +68,7 @@
       factory=".IlaraSamplesAdapter.IlaraSamplesAdapter"
       provides="senaite.core.listing.interfaces.IListingViewAdapter"
       />
-
+  <!--
   <adapter
       for="ilara.mods.interfaces.IRoutineAnalysis"
       factory=".DynamicSpecifications.DynamicResultsRange"
@@ -78,6 +78,7 @@
     <class class="bika.lims.content.analysis.Analysis">
       <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
     </class>
+  -->
 
   <!-- Report resource directory -->
   
