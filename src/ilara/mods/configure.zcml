@@ -43,6 +43,7 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <!-- JSONAPI routes for web-app functions -->
     <adapter
       for="*" 
       name="ilara.mods.push.task"
@@ -54,7 +55,9 @@
       name="ilara.mods.push.db"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
       factory=".PushContentTypes.IlaraContentTypes"/>
-  
+
+  <!-- List subscribers for web-app hooks -->
+
   <subscriber
       for="bika.lims.browser.publish.reports_listing.ReportsListingView
            *"
@@ -68,10 +71,12 @@
       factory=".IlaraSamplesAdapter.IlaraSamplesAdapter"
       provides="senaite.core.listing.interfaces.IListingViewAdapter"
       />
+
+  <!-- Dynamic specifications adapter -->
  
   <adapter
       for="ilara.mods.interfaces.IRoutineAnalysis"
-      factory=".dynamicresultsrange.DynamicResultsRange"
+      factory=".dynamicresultsrange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 
@@ -85,24 +90,6 @@
   <plone:static
       directory="impress/reports"
       type="senaite.impress.reports"/>
-  <!--
-  <adapter
-      for="*
-           *
-           ilara.mods.interfaces.IIlaraModsLayer"
-      name="AnalysisRequest"
-      factory=".reportview.MySingleReportView"
-      provides="senaite.impress.interfaces.IReportView"
-      permission="zope2.View"/>
 
-  <adapter
-      for="*
-           *
-           ilara.mods.interfaces.IIlaraModsLayer"
-      name="AnalysisRequest"
-      factory=".reportview.MyMultiReportView"
-      provides="senaite.impress.interfaces.IMultiReportView"
-      permission="zope2.View"/>
-  -->
 
 </configure>
