@@ -8,44 +8,38 @@ from bika.lims import logger
 class DynamicResultsRange(object):
 
     def __init__(self, analysis):
-        logger.info('LFT1')
         self.analysis = analysis
+        self.analysisrequest = analysis.getRequest()
+        self.specification = self.analysisrequest.getSpecification()
+        self.dynamicspec = None
+        if self.specification:
+            self.dynamicspec = self.specification.getDynamicAnalysisSpec()
 
     def __call__(self):
-        logger.info('LFT2')
         if not IRequestAnalysis.providedBy(self.analysis):
             # Cannot grab the patient from analyses not assigned to a Sample
             return {}
 
         # Get the sample's specificaion
-        sample = self.analysis.getRequest()
-        specification = sample.getSpecification()
-        if not specification:
+        if not self.specification:
             # No specification, nothing to do
             return {}
 
-        # Dynamic specification
-        dyn_spec = specification.getDynamicAnalysisSpec()
-
         # Get the patient from the sample
-        sample = self.analysis.getRequest()
-        patient = sample.getField("Patient").get(sample)
+        patient = sample.getField("Patient").get(self.analysisrequest)
         if not patient:
             # No patient assigned for this sample, do nothing
             return {}
-
-        logger.info('Got patient')
 
         # Patient's age (in years)
         age = patient.getAge()
         # Patient's gender (male/female/dk)
         sex = patient.getGender()
-        logger.info('Got gender: '+sex)
 
         # Get the dynamic specification for this analysis by keyword
         # We expect the xls to have the columns "keyword", "age" and "sex"
         keyword = self.analysis.getKeyword()
-        ranges = dyn_spec.get_by_keyword().get(keyword)
+        ranges = self.dynamicspec.get_by_keyword().get(keyword)
 
         if not ranges:
             # No ranges defined for this analysis
