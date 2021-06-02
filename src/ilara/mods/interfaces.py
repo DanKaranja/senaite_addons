@@ -14,4 +14,3 @@ class IIlaraModsLayer(IDefaultBrowserLayer):
 
 class IRoutineAnalysis(Interface):
     """For Dynamic Analysis Specifications"""
-

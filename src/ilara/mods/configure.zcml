@@ -44,7 +44,6 @@
 
   <!-- -*- extra stuff goes here -*- -->
   <!-- JSONAPI routes for web-app functions -->
-  <!--
     <adapter
       for="*" 
       name="ilara.mods.push.task"
@@ -56,7 +55,6 @@
       name="ilara.mods.push.db"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
       factory=".PushContentTypes.IlaraContentTypes"/>
-  -->
   <!-- List subscribers for web-app hooks -->
 
   <subscriber
@@ -76,14 +74,16 @@
   <!-- Dynamic specifications adapter -->
  
   <adapter
-      for="ilara.mods.interfaces.IRoutineAnalysis"
-      factory=".dynamicresultsrange"
+      for="*
+           *
+           ilara.mods.interfaces.IRoutineAnalysis"
+      factory=".dynamicresultsrange.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 
-    <class class="bika.lims.content.analysis.Analysis">
-      <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
-    </class>
+  <class class="bika.lims.content.analysis.Analysis">
+    <implements interface="ilara.mods.interfaces.IRoutineAnalysis" />
+  </class>
   
 
   <!-- Report resource directory -->
