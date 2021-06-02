@@ -76,7 +76,7 @@
  
   <adapter
       for="ilara.mods.interfaces.IRoutineAnalysis"
-      factory=".dynamicresultsrange.DynamicResultsRange"
+      factory=".dynamicrresultsrange.DynamicResultsRange"
       provides="bika.lims.interfaces.IDynamicResultsRange"
       />
 

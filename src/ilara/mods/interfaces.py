@@ -12,6 +12,6 @@ class IIlaraModsLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
-# class IRoutineAnalysis(Interface):
+class IRoutineAnalysis(Interface):
     """For Dynamic Analysis Specifications"""
 
