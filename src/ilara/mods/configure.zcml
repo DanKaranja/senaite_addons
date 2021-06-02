@@ -44,6 +44,7 @@
 
   <!-- -*- extra stuff goes here -*- -->
   <!-- JSONAPI routes for web-app functions -->
+  <!--
     <adapter
       for="*" 
       name="ilara.mods.push.task"
@@ -55,7 +56,7 @@
       name="ilara.mods.push.db"
       provides="senaite.jsonapi.interfaces.IPushConsumer"
       factory=".PushContentTypes.IlaraContentTypes"/>
-
+  -->
   <!-- List subscribers for web-app hooks -->
 
   <subscriber
