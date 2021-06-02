@@ -26,7 +26,7 @@ class DynamicResultsRange(object):
             return {}
 
         # Get the patient from the sample
-        patient = sample.getField("Patient").get(self.analysisrequest)
+        patient = sample.getField("Patlient").get(self.analysisrequest)
         if not patient:
             # No patient assigned for this sample, do nothing
             return {}
