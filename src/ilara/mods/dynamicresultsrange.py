@@ -8,6 +8,7 @@ from bika.lims import logger
 class DynamicResultsRange(object):
 
     def __init__(self, analysis):
+        logger.info("Dynamic specifications were called")
         self.analysis = analysis
         self.analysisrequest = analysis.getRequest()
         self.specification = self.analysisrequest.getSpecification()
