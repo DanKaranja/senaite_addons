@@ -62,7 +62,7 @@ class IlaraSamplesAdapter(object):
         if len(payment_responses) > 0:
             payment_response = api.get_object(payment_responses[0])
             # payment_result_code = payment_response.resultcode
-            payment_result_code = api.safe_getattr(payment_response,'resultcode') 
+            payment_result_code = payment_responses[0]['resultcode']
             logger.info('A payment response was received '+sample_title+' | '+payment_result_code)
             item['request_payment'] = "<a href='%s' target='_blank'>Paid</a>" % payment_app_url
         
