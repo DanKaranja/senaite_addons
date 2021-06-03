@@ -63,7 +63,8 @@ class IlaraSamplesAdapter(object):
         if len(payment_responses) > 0:
             payment_response = api.get_object(payment_responses[0])
             payment_result_code = payment_response.resultcode
-            logger.info('Created: '+payment_response.transactiondate)
+            if payment_response.transactiondate:
+                logger.info('Created: '+payment_response.transactiondate)
 
             if payment_result_code and payment_result_code == '0': 
                 logger.info('Result code: '+payment_result_code)
