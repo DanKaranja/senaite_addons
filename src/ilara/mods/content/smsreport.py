@@ -8,7 +8,16 @@ from zope import schema
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 
+from bika.lims import _
+from bika.lims.catalog import SETUP_CATALOG
+from plone.dexterity.content import Item
+
 from ploneconf.site import MessageFactory as _
+
+class SMSReport(Item):
+    """Dynamic Analysis Specification
+    """
+    _catalogs = [SETUP_CATALOG]
 
 class ISMSReport(model.Schema):
     """Dexterity-Schema for SMS reports

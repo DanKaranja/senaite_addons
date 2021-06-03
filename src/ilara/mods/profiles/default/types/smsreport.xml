@@ -21,7 +21,6 @@
 
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
- <property name="klass">plone.dexterity.content.Container</property>
 
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
@@ -32,8 +31,9 @@
   <element
      value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
  </property>
- 
+
  <property name="schema">ilara.mods.content.smsreport.ISMSReport</property>
+ <property name="klass">ilara.mods.content.smsreport.ISMSReport</property>
 
  <property name="model_file"></property>
  <property name="schema_policy">dexterity</property>
