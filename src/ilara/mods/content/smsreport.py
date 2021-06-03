@@ -12,7 +12,6 @@ from bika.lims import _
 from bika.lims.catalog import SETUP_CATALOG
 from plone.dexterity.content import Item
 
-from ploneconf.site import MessageFactory as _
 
 class SMSReport(Item):
     """Dynamic Analysis Specification
