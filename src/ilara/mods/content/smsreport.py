@@ -33,3 +33,8 @@ class ISMSReport(model.Schema):
         title=_(u"report_uid"),
         required=False
     )
+
+    tiny_url = schema.TextLine(
+        title=_(u"report_uid"),
+        required=False
+    )
