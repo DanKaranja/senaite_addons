@@ -47,7 +47,7 @@
  <action title="View" action_id="view" category="object" condition_expr=""
     description="" icon_expr="" link_target="" url_expr="string:${object_url}"
     visible="True">
-  <permission value="View"/>
+  <permission value="Modify portal content"/>
  </action>
  <action title="Edit" action_id="edit" category="object" condition_expr=""
     description="" icon_expr="" link_target=""

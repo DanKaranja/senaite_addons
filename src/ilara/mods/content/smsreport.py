@@ -10,7 +10,7 @@ from zope.schema.vocabulary import SimpleTerm
 
 from ploneconf.site import MessageFactory as _
 
-class smsreport(model.Schema):
+class ISMSReport(model.Schema):
     """Dexterity-Schema for SMS reports
     """
 

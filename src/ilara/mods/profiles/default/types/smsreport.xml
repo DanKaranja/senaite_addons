@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object name="smsreport" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-   
+
  <property name="title" i18n:translate="">smsreport</property>
  <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
@@ -32,8 +32,8 @@
   <element
      value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
  </property>
-
- <property name="schema">ilara.mods.content.smsreport.smsreport</property>
+ 
+ <property name="schema">ilara.mods.content.smsreport.ISMSReport</property>
 
  <property name="model_file"></property>
  <property name="schema_policy">dexterity</property>
