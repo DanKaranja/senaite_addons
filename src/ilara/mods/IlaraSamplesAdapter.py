@@ -58,10 +58,10 @@ class IlaraSamplesAdapter(object):
             logger.info('A payment request was made for '+sample_title)
             item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
         
-        payment_responses = api.search({"portal_type": "mpeseresponse", "title": sample_title})
+        payment_responses = api.search({"portal_type": "mpesaresponse", "title": sample_title})
         if len(payment_responses) > 0:
             payment_response = api.get_object(payment_responses[0])
-            logger.info('A payment response was received '+sample_title)
+            logger.info('A payment response was received '+sample_title+' | '+payment_response.resultcode)
             item['request_payment'] = "<a href='%s' target='_blank'>Paid</a>" % payment_app_url
         
         
