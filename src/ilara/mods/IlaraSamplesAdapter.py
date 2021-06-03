@@ -3,6 +3,7 @@ from senaite.core.listing.interfaces import IListingView
 from senaite.core.listing.interfaces import IListingViewAdapter
 from zope.component import adapts
 from zope.interface import implements
+from bika.lims import logger
 
 class IlaraSamplesAdapter(object):
     adapts(IListingView)
@@ -42,12 +43,17 @@ class IlaraSamplesAdapter(object):
                 
 
     def folder_item(self, obj, item, index):
+        base_url = 'http://localhost:8081/'
+        # base_url = 'http://35.190.90.81/'
+
         sample = api.get_object(obj)
-        # sms_api_url = obj.getContactURL
-        # subtotal = obj.getDateReceived
-        # ar = sample.getAnalysisRequest()
+        sample_title = sample.Title()
+        payment_app_url = base_url+'payments?sampleid='+sample_title
+
+        payment_requests = api.search({"portal_type": "mpesarequest", "title": sample_title})
+        if len(payment_requests) > 0:
+            logger.info('A payment request was made for '+sample_title)
+            payment_request = api.get_object(payment_requests[0])
         
-        # query_url = 'http://35.190.90.81/payments?sampleid='+sample.Title()
-        query_url = 'http://localhost:8081/payments?sampleid='+sample.Title()
-        item['request_payment'] = "<a href='%s' target='_blank'>Request Payment</a>" % query_url
+        item['request_payment'] = "<a href='%s' target='_blank'>Request Payment</a>" % payment_app_url
         return item
