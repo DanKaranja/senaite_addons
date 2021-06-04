@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
 <object name="smsreports" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
  <property name="title" i18n:translate="">smsreports</property>
  <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
  <property name="factory">smsreports</property>
- <property
-    name="add_view_expr">string:${folder_url}/++add++smsreports</property>
+ <property name="add_view_expr">string:${folder_url}/++add++smsreports</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
- <property name="global_allow">True</property>
+ <property name="global_allow">False</property>
  <property name="filter_content_types">True</property>
+
  <property name="allowed_content_types">
   <element value="smsreport"/>
  </property>
+
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>
  <property name="view_methods">
@@ -38,12 +40,15 @@
       &lt;/field&gt;
     &lt;/schema&gt;
   &lt;/model&gt;</property>
+
  <property name="model_file"></property>
  <property name="schema_policy">dexterity</property>
+
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>
  <alias from="sharing" to="@@sharing"/>
  <alias from="view" to="(selected layout)"/>
+
  <action title="View" action_id="view" category="object" condition_expr=""
     description="" icon_expr="" link_target="" url_expr="string:${object_url}"
     visible="True">
