@@ -290,11 +290,11 @@
                 <!-- Category -->
                 <col style="width: 30%;">
                 <!-- Result -->
-                <col style="width: 20%">
+                <col style="width: 30%">
                 <!-- Unit -->
-                <col style="width: 20%">
+                <col style="width: 10%">
                 <!-- Range -->
-                <col style="width: 20%">
+                <col style="width: 15%">
                 <!-- Out of Range -->
                 <col style="width: 10%">
               </colgroup>
