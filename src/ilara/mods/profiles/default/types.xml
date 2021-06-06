@@ -3,5 +3,9 @@
  <property name="title">Controls the available content types in your portal</property>
  <object name="smsreports" meta_type="Dexterity FTI"/>
  <object name="smsreport" meta_type="Dexterity FTI"/>
+ <object name="mpesarequests" meta_type="Dexterity FTI"/>
+ <object name="mpesarequest" meta_type="Dexterity FTI"/>
+ <object name="mpesaresponses" meta_type="Dexterity FTI"/>
+ <object name="mpesaresponse" meta_type="Dexterity FTI"/>
  <!-- -*- extra stuff goes here -*- -->
 </object>
