@@ -42,11 +42,13 @@ class IlaraSamplesReportsAdapter(object):
                 
 
     def folder_item(self, obj, item, index):
+        # base_url = 'http://localhost:8081/'
+        base_url = 'http://35.190.90.81/'
+
         sample = api.get_object(obj)
-        # sms_api_url = obj.getContactURL
-        # subtotal = obj.getDateReceived
         ar = sample.getAnalysisRequest()
-        # query_url = 'http://35.190.90.81/smspublish?sampleid='+ar.Title()
-        query_url = 'http://localhost:8081/smspublish?sampleid='+ar.Title()
+
+        query_url = base_url+'smspublish?sampleid='+ar.Title()
+        
         item['sms_report'] = "<a href='%s' target='_blank'>Send SMS</a>" % query_url
         return item
