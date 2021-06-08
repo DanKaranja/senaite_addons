@@ -43,8 +43,8 @@ class IlaraSamplesAdapter(object):
                 
 
     def folder_item(self, obj, item, index):
-        # base_url = 'http://localhost:8081/'
-        base_url = 'http://35.190.90.81/'
+        base_url = 'http://localhost:8081/'
+        # base_url = 'http://35.190.90.81/'
 
         sample = api.get_object(obj)
         sample_title = sample.Title()
