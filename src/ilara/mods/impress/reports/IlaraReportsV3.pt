@@ -99,14 +99,14 @@
        max-height: <tal:t replace="python:'{:.2f}mm'.format(ch * 0.75)"/>;
      }
      </tal:block>
-     @page {
+     <!-- @page {
        @bottom-right {
          vertical-align: top;
          margin-top: 2mm;
          font-size: 9pt;
          content: "<tal:t i18n:translate=''>Page</tal:t> " counter(page) " <tal:t i18n:translate=''>of</tal:t> " counter(pages);
        }
-     }
+     } -->
     </style>
   </tal:css>
 
