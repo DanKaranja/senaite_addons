@@ -267,12 +267,9 @@
     </div>
   </tal:render>
 
-
-
-
   <!-- RESULTS -->
   <tal:render condition="python:True">
-    <div class="row section-results no-gutters">
+    <div class="row">
       <div class="w-100">
         <h1 i18n:translate="">Results</h1>
 
