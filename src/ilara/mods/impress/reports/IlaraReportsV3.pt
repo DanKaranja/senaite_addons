@@ -447,7 +447,7 @@
           <td>
             <div>
               <strong tal:content="laboratory/Name">Lab Name</strong>
-              • <span tal:content="reporter/Location|nothing">Lab Street and Number</span>
+              • <span tal:content="reporter/location">Lab Street and Number</span>
             </div>
             <div>
               <strong i18n:translate="">Published by</strong>:
