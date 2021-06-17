@@ -285,9 +285,9 @@
             <table class="table table-sm table-condensed">
               <colgroup>
                 <!-- Category -->
-                <col style="width: 30%;">
+                <col style="width: 15%;">
                 <!-- Description -->
-                <col style="width: 30%;">
+                <col style="width: 15%;">
                 <!-- Result -->
                 <col style="width: 30%">
                 <!-- Unit -->
