@@ -286,6 +286,8 @@
               <colgroup>
                 <!-- Category -->
                 <col style="width: 30%;">
+                <!-- Description -->
+                <col style="width: 30%;">
                 <!-- Result -->
                 <col style="width: 30%">
                 <!-- Unit -->
@@ -299,6 +301,9 @@
                 <tr class="small">
                   <th class="analysis">
                     <span class="font-weight-bold" tal:content="category/Title">Category</span>
+                  </th>
+                  <th class="analysis">
+                    <span class="font-weight-bold">Description</span>
                   </th>
                   <th class="text-right result">
                     <span i18n:translate="">Result</span>
@@ -328,6 +333,11 @@
                       </span>
                       <span tal:condition="analysis/ScientificName">
                         <span class="font-italic" tal:content="analysis/title"></span>
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <span>
+                        <span class="font-weight-normal" tal:content="analysis/description"></span>
                       </span>
                     </td>
                     <td class="text-right">
