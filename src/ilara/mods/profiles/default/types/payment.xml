@@ -3,7 +3,7 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">payment</property>
  <property name="description"
-    i18n:translate="">Payments item for Ilara Samples</property>
+    i18n:translate="">Single item for lab payments</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
  <property name="factory">payment</property>
  <property name="add_view_expr">string:${folder_url}/++add++payment</property>
@@ -27,14 +27,95 @@
   <element
      value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
   <element value="bika.lims.interfaces.IMultiCatalogBehavior"/>
+  <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
   <element
      value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
  </property>
  <property name="schema"></property>
- <property name="model_source">
+ <property name="model_source">&lt;?xml version='1.0' encoding='utf8'?&gt;
   &lt;model xmlns="http://namespaces.plone.org/supermodel/schema"&gt;
       &lt;schema&gt;
-      &lt;/schema&gt;
+      &lt;field name="invoice_amount" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;invoice_amount&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="payable_amount" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;payable_amount&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="phone_number" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;phone_number&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_account" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_account&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_reference" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_reference&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_merchantrequestid" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_merchantrequestid&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_checkoutrequestid" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_checkoutrequestid&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_responsecode" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_responsecode&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_resultdesc" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_resultdesc&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_resultcode" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_resultcode&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_amount" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_amount&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_mpesareceiptnumber" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_mpesareceiptnumber&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="mpesa_transactiondate" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;mpesa_transactiondate&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="is_consolidated" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;is_consolidated&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="is_transport_included" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;is_transport_included&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="transport_amount" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;transport_amount&lt;/title&gt;
+      &lt;/field&gt;
+    &lt;/schema&gt;
   &lt;/model&gt;</property>
  <property name="model_file"></property>
  <property name="schema_policy">dexterity</property>
