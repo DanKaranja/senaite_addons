@@ -57,13 +57,15 @@ class IlaraSamplesAdapter(object):
             payment_request = api.get_object(payment_requests[0])
 
             logger.info('A payment request was made for '+sample_title)
-
+            logger.info('Is consolidated: '+payment_request.is_consolidated)
+            logger.info('Result code: '+payment_request.mpesa_resultcode)
+            
             if payment_request.is_consolidated == "True":
                 logger.info(sample_title+'is a consolidated payment')
                 item['request_payment'] = "<a href='%s' target='_blank'>Consolidated Payment</a>" % payment_app_url
             
             if payment_request.is_consolidated == "False":
-                logger.info(sample_title+'is not a consolidated payment, but: '+payment_request.mpesa_resultcode)
+                logger.info(sample_title+'is not a consolidated payment, but: ')
                 if payment_request.mpesa_resultcode == None:
                     item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
             
