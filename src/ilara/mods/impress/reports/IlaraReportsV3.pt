@@ -337,7 +337,7 @@
                     </td>
                     <td class="analysis">
                       <span class="text-success">
-                        <span class="font-weight-normal" tal:content="analysis/BulkPrice"></span>
+                        <span class="font-weight-normal" tal:content="analysis/Description"></span>
                       </span>
                     </td>
                     <td class="text-right">
