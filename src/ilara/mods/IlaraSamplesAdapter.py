@@ -52,12 +52,12 @@ class IlaraSamplesAdapter(object):
         payment_app_url = base_url+'payments?sampleid='+sample_title
         item['request_payment'] = "<a href='%s' target='_blank'>Not paid</a>" % payment_app_url
 
-        payment_requests = api.search({"portal_type": "payment", "title": sample_title,'sort_on': 'created()','sort_order':'desc'})
+        payment_requests = api.search({"portal_type": "payment", "title": sample_title,'sort_on': 'created','sort_order':'desc'})
         if len(payment_requests) > 0:
             payment_request = api.get_object(payment_requests[0])
 
             logger.info('A payment request was made for {0}'.format(payment_request.title))
-            logger.info('Account: {0}'.format(payment_request.mpesa_account))
+            logger.info('ID: {0}'.format(payment_request.id))
             logger.info('Is consolidated: {0}'.format(payment_request.is_consolidated))
             logger.info('Result code: {0}'.format(payment_request.mpesa_resultcode))
             
