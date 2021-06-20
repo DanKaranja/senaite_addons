@@ -49,28 +49,21 @@ class IlaraSamplesAdapter(object):
         sample = api.get_object(obj)
         sample_title = sample.Title()
 
-        payment_app_url = base_url+'payments?sampleid='+sample_title
-        item['request_payment'] = "<a href='%s' target='_blank'>Request Payment</a>" % payment_app_url
+        payment_app_url = base_url+'payment?complete=tru&&limit=1&sort_order=desc&sort_on=created&title='+sample_title
+        item['request_payment'] = "<a href='%s' target='_blank'>Not paid</a>" % payment_app_url
 
-        payment_requests = api.search({"portal_type": "mpesarequest", "title": sample_title})
+        payment_requests = api.search({"portal_type": "payment", "title": sample_title})
         if len(payment_requests) > 0:
             payment_request = api.get_object(payment_requests[0])
-            logger.info('A payment request was made for '+sample_title)
-            item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
-        
-        payment_responses = api.search({"portal_type": "mpesaresponse", "title": sample_title,"sort_on": "created"})
-        logger.info('Responses for '+sample_title+' : '+str(len(payment_responses)))
-        if len(payment_responses) > 0:
-            payment_response = api.get_object(payment_responses[0])
-            payment_result_code = payment_response.resultcode
-            
-            # if payment_response.transactiondate:
-            #     logger.info('Created: '+payment_response.transactiondate)
 
-            if payment_result_code and payment_result_code == '0': 
-                logger.info('Result code: '+payment_result_code)
-                item['request_payment'] = "<a href='%s' target='_blank'>Paid</a>" % payment_app_url
-                    
-        
-        
+            logger.info('A payment request was made for '+sample_title)
+
+            if payment_request.is_consolidated == "True":
+                logger.info(sample_title+'is a consolidated payment')
+                item['request_payment'] = "<a href='%s' target='_blank'>Consolidated Payment</a>" % payment_app_url
+            
+            if payment_request.is_consolidated == "False" and payment_request.mpesa_resultcode == None:
+                logger.info(sample_title+'is a consolidated payment')
+                item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
+            
         return item
