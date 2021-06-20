@@ -329,15 +329,15 @@
                             tal:condition="analysis/Accredited">
                       </span>
                       <span tal:condition="not:analysis/ScientificName">
-                        <span class="font-weight-normal" tal:content="analysis/title"></span>
+                        <span class="font-weight-normal" tal:content="analysis/description"></span>
                       </span>
                       <span tal:condition="analysis/ScientificName">
                         <span class="font-italic" tal:content="analysis/title"></span>
                       </span>
                     </td>
                     <td class="analysis">
-                      <span>
-                        <span class="font-weight-normal" tal:content="analysis/description"></span>
+                      <span class="text-success">
+                        <span class="font-weight-normal" tal:content="analysis/title"></span>
                       </span>
                     </td>
                     <td class="text-right">
