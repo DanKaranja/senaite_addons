@@ -287,9 +287,9 @@
                 <!-- Category -->
                 <col style="width: 15%;">
                 <!-- Description -->
-                <col style="width: 15%;">
+                <col style="width: 30%;">
                 <!-- Result -->
-                <col style="width: 30%">
+                <col style="width: 10%">
                 <!-- Unit -->
                 <col style="width: 10%">
                 <!-- Range -->
@@ -335,7 +335,7 @@
                         <span class="font-italic" tal:content="analysis/title"></span>
                       </span>
                     </td>
-                    <td class="text-right">
+                    <td class="analysis">
                       <span>
                         <span class="font-weight-normal" tal:content="analysis/description"></span>
                       </span>
