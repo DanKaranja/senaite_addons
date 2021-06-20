@@ -57,8 +57,8 @@ class IlaraSamplesAdapter(object):
             payment_request = api.get_object(payment_requests[0])
 
             logger.info('A payment request was made for '+sample_title)
-            logger.info('Is consolidated: '+payment_request.is_consolidated)
-            logger.info('Result code: '+payment_request.mpesa_resultcode)
+            logger.info('Is consolidated: {0}'.format(payment_request.is_consolidated))
+            logger.info('Result code: {0}'.format(payment_request.mpesa_resultcode))
             
             if payment_request.is_consolidated == "True":
                 logger.info(sample_title+'is a consolidated payment')
