@@ -43,8 +43,8 @@ class IlaraSamplesAdapter(object):
                 
 
     def folder_item(self, obj, item, index):
-        # base_url = 'http://localhost:8081/'
-        base_url = 'http://35.190.90.81/'
+        base_url = 'http://localhost:8081/'
+        # base_url = 'http://35.190.90.81/'
 
         sample = api.get_object(obj)
         sample_title = sample.Title()
@@ -52,7 +52,7 @@ class IlaraSamplesAdapter(object):
         payment_app_url = base_url+'payments?sampleid='+sample_title
         item['request_payment'] = "<a href='%s' target='_blank'>Not paid</a>" % payment_app_url
 
-        payment_requests = api.search({"portal_type": "payment", "title": sample_title,'sort_on': 'id','sort_order':'desc'})
+        payment_requests = api.search({"portal_type": "payment", "title": sample_title,'sort_on': 'created','sort_order':'desc'})
         if len(payment_requests) > 0:
             payment_request = api.get_object(payment_requests[0])
 
