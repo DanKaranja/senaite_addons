@@ -336,7 +336,7 @@
                       </span>
                     </td>
                     <td class="analysis">
-                      <span class="text-success">
+                      <span>
                         <span class="font-weight-normal" tal:content="analysis/Description"></span>
                       </span>
                     </td>
