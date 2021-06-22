@@ -52,7 +52,7 @@ class IlaraSamplesAdapter(object):
         payment_app_url = base_url+'payments?sampleid='+sample_title
         item['request_payment'] = "<a href='%s' target='_blank'>Not paid</a>" % payment_app_url
 
-        payment_requests = api.search({"portal_type": "payment", "title": sample_title,'sort_on': 'mpesa_checkoutrequestid','sort_order':'desc'})
+        payment_requests = api.search({"portal_type": "payment", "title": sample_title,'complete':True,'sort_on': 'mpesa_checkoutrequestid','sort_order':'desc'})
         if len(payment_requests) > 0:
             payment_request = api.get_object(payment_requests[0])
 
