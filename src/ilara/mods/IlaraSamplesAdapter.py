@@ -54,25 +54,27 @@ class IlaraSamplesAdapter(object):
 
         payment_results = api.search({"portal_type": "payment", "title": sample_title})
         payments = map(api.get_object, payment_results)
-        logger.info('Payments found: {0}'.format(len(payments)))
+        # logger.info('Payments found: {0}'.format(len(payments)))
 
         if len(payments) > 0:
             payments.sort(key=lambda payment: payment.created, reverse=True)
             latest_payment = payments[0]
 
-            logger.info('A payment request was made for {0}'.format(latest_payment.title))
-            logger.info('ID: {0}'.format(latest_payment.id))
-            logger.info('Is consolidated: {0}'.format(latest_payment.is_consolidated))
-            logger.info('Invoice amount: {0}'.format(latest_payment.invoice_amount))
-            logger.info('Result code: {0}'.format(latest_payment.mpesa_resultcode))
+            # logger.info('A payment request was made for {0}'.format(latest_payment.title))
+            # logger.info('ID: {0}'.format(latest_payment.id))
+            # logger.info('Is consolidated: {0}'.format(latest_payment.is_consolidated))
+            # logger.info('Invoice amount: {0}'.format(latest_payment.invoice_amount))
+            # logger.info('Result code: {0}'.format(latest_payment.mpesa_resultcode))
             
             if latest_payment.is_consolidated == "True":
-                logger.info(sample_title+'is a consolidated payment')
+                # logger.info(sample_title+'is a consolidated payment')
                 item['request_payment'] = "<a href='%s' target='_blank'>Consolidated Payment</a>" % payment_app_url
             
             if latest_payment.is_consolidated == "False":
-                logger.info(sample_title+'is not a consolidated payment, but: ')
+                # logger.info(sample_title+'is not a consolidated payment, but: ')
                 if latest_payment.mpesa_resultcode == None:
                     item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
+                if latest_payment.mpesa_responsecode == '0':
+                    item['request_payment'] = "<a href='%s' target='_blank'>Paid</a>" % payment_app_url
             
         return item
