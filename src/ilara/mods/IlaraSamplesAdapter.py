@@ -57,12 +57,13 @@ class IlaraSamplesAdapter(object):
         logger.info('Payments found: {0}'.format(len(payments)))
 
         if len(payments) > 0:
-            payments.sort(key=lambda payment: payment.created, reverse=False)
+            payments.sort(key=lambda payment: payment.created, reverse=True)
             latest_payment = payments[0]
 
             logger.info('A payment request was made for {0}'.format(latest_payment.title))
             logger.info('ID: {0}'.format(latest_payment.id))
             logger.info('Is consolidated: {0}'.format(latest_payment.is_consolidated))
+            logger.info('Invoice amount: {0}'.format(latest_payment.invoice_amount))
             logger.info('Result code: {0}'.format(latest_payment.mpesa_resultcode))
             
             if latest_payment.is_consolidated == "True":
