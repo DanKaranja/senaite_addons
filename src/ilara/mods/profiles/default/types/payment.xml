@@ -115,6 +115,26 @@
         &lt;required&gt;False&lt;/required&gt;
         &lt;title&gt;transport_amount&lt;/title&gt;
       &lt;/field&gt;
+      &lt;field name="is_cash" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;is_cash&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="entered_amount" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;entered_amount&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="date_requested" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;date_requested&lt;/title&gt;
+      &lt;/field&gt;
+      &lt;field name="is_mpesa" type="zope.schema.TextLine"&gt;
+        &lt;description/&gt;
+        &lt;required&gt;False&lt;/required&gt;
+        &lt;title&gt;is_mpesa&lt;/title&gt;
+      &lt;/field&gt;
     &lt;/schema&gt;
   &lt;/model&gt;</property>
  <property name="model_file"></property>
