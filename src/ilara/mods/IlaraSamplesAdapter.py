@@ -60,14 +60,14 @@ class IlaraSamplesAdapter(object):
             payments.sort(key=lambda payment: payment.created, reverse=True)
             latest_payment = payments[0]
 
-            # logger.info('A payment request was made for {0}'.format(latest_payment.title))
-            # logger.info('ID: {0}'.format(latest_payment.id))
-            # logger.info('Is consolidated: {0}'.format(latest_payment.is_consolidated))
-            # logger.info('Invoice amount: {0}'.format(latest_payment.invoice_amount))
-            # logger.info('Result code: {0}'.format(latest_payment.mpesa_resultcode))
+            logger.info('A payment request was made for {0}'.format(latest_payment.title))
+            logger.info('ID: {0}'.format(latest_payment.id))
+            logger.info('Is consolidated: {0}'.format(latest_payment.is_consolidated))
+            logger.info('Result code: {0}'.format(latest_payment.mpesa_resultcode))
+            logger.info('Response code: {0}'.format(latest_payment.mpesa_responsecode))
             
             if latest_payment.is_consolidated == "True":
-                # logger.info(sample_title+'is a consolidated payment')
+                logger.info(sample_title+'is a consolidated payment')
                 item['request_payment'] = "<a href='%s' target='_blank'>Consolidated Payment</a>" % payment_app_url
             
             if latest_payment.is_consolidated == "False":
