@@ -57,8 +57,8 @@ class IlaraSamplesAdapter(object):
         # logger.info('Payments found: {0}'.format(len(payments)))
 
         if len(payments) > 0:
-            payments.sort(key=lambda payment: payment.created, reverse=True)
-            latest_payment = payments[0]
+            sorted_payments = sorted(payments,key=lambda payment: payment.created, reverse=True)
+            latest_payment = sorted_payments[0]
 
             logger.info('A payment request was made for {0}'.format(latest_payment.title))
             logger.info('ID: {0}'.format(latest_payment.id))
@@ -73,7 +73,7 @@ class IlaraSamplesAdapter(object):
             if latest_payment.is_consolidated == "False":
                 logger.info(sample_title+': not a consolidated payment')
                 if latest_payment.mpesa_resultcode == None and latest_payment.mpesa_responsecode == '0':
-                    logger.info(sample_title+'Incomplete')
+                    logger.info(sample_title+': Incomplete')
                     item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
                 if latest_payment.mpesa_resultcode == '0':
                     logger.info(sample_title+': Paid')
