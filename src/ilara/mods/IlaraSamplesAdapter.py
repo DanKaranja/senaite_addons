@@ -71,10 +71,12 @@ class IlaraSamplesAdapter(object):
                 item['request_payment'] = "<a href='%s' target='_blank'>Consolidated Payment</a>" % payment_app_url
             
             if latest_payment.is_consolidated == "False":
-                # logger.info(sample_title+'is not a consolidated payment, but: ')
+                logger.info(sample_title+'not a consolidated payment')
                 if latest_payment.mpesa_resultcode == None:
+                    logger.info(sample_title+'Incomplete')
                     item['request_payment'] = "<a href='%s' target='_blank'>Incomplete Payment</a>" % payment_app_url
                 if latest_payment.mpesa_responsecode == '0':
+                    logger.info(sample_title+'Paid')
                     item['request_payment'] = "<a href='%s' target='_blank'>Paid</a>" % payment_app_url
             
         return item
