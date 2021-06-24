@@ -104,6 +104,9 @@ class IlaraFunctions(object):
             logger.info("Analysis Request Catalog Results: {0}".format(len(aRequest_cat_query_results)))
             
             patient_id = aRequest_cat_query_results[0].getPatientID
+            creator_email = aRequest_cat_query_results[0].getCreatorEmail
+
+            logger.info("Creator Email Address: {0}".format(creator_email))
             patient_query_results = api.search({"portal_type": "Patient","id": "%s" % patient_id,"Complete":True})
 
             logger.info("Patient Results: {0}".format(len(patient_query_results)))
@@ -111,12 +114,29 @@ class IlaraFunctions(object):
             patient = api.get_object(patient_query_results[0])
 
             try:
-                invoice_object['MobilePhone'] = patient.getMobilePhone()
-                invoice_object['FullName'] = patient.getFullname()
+                invoice_object['patient_phone_number'] = patient.getMobilePhone()
+                invoice_object['patient_fullname'] = patient.getFullname()
 
                 logger.info('{0} - {1}'.format(patient.getFullname(),patient.getMobilePhone()))
             except Exception as e:
                 logger.info("Failed to get patient object properties {0}".format(e))
+
+
+            #Getting creator
+            LabContacts_query_results = api.search({"portal_type": "LabContact","Complete":True})
+
+            try:
+                LabContacts = map(api.get_object, LabContacts_query_results)
+                filtered = filter(lambda contact: contact.EmailAddress == creator_email, LabContacts)
+
+                logger.info("Filtered lab contacts: {0}".format(len(filtered)))
+                if len(filtered)  > 0:
+                    creator = filtered[0]
+                    invoice_object['creator_phone_number'] = creator.MobilePhone
+                    invoice_object['creator_uid'] = creator.uid
+                    invoice_object['creator_email'] = creator_email
+            except Exception as e:
+                logger.info("Failed to get creator details {0}".format(e))  
 
             results.append(invoice_object)
                     
@@ -126,5 +146,6 @@ class IlaraFunctions(object):
             response.update({'status': 'success'})
         
         response.update({'results':results})
+        logger.info("Returning  object: {0}".format(response))
 
         return response
