@@ -134,7 +134,7 @@ class IlaraFunctions(object):
                 if len(filtered)  > 0:
                     creator = filtered[0]
                     invoice_object['creator_phone_number'] = creator.MobilePhone
-                    invoice_object['creator_uid'] = creator.uid
+                    # invoice_object['creator_uid'] = creator.uid
                     invoice_object['creator_email'] = creator_email
             except Exception as e:
                 logger.info("Failed to get creator details {0}".format(e))  
