@@ -94,6 +94,7 @@ class IlaraFunctions(object):
             try:
                 invoice_object['title'] = sample.Title()
                 invoice_object['subtotal'] = sample.getSubtotal()
+                invoice_object['discount_amount'] = sample.getDiscountAmount()
                 logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
             except Exception as e:
                 logger.info("Failed to get sample object properties {0}".format(e))
