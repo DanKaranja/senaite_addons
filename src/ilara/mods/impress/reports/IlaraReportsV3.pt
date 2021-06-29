@@ -448,7 +448,7 @@
   <!-- DEFAULT FOOTER -->
   <tal:render condition="python:not footer"
               define="reporter python:view.current_user;
-                      manager python:view.manager;
+                      manager python:view.model.manager;
                       laboratory python:view.laboratory;">
     <div class="row section-footer no-gutters">
       <!-- Footer Line -->
