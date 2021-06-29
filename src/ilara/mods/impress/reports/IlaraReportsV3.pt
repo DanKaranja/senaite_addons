@@ -448,6 +448,7 @@
   <!-- DEFAULT FOOTER -->
   <tal:render condition="python:not footer"
               define="reporter python:view.current_user;
+                      manager python:model.manager;
                       laboratory python:view.laboratory;">
     <div class="row section-footer no-gutters">
       <!-- Footer Line -->
@@ -457,13 +458,13 @@
           <td>
             <div>
               <strong tal:content="laboratory/Name">Lab Name</strong>
-              • <span tal:content="reporter/location|nothing">Lab Location</span>
+              • <span tal:content="manager/PhysicalAddress/address|nothing">Lab Location</span>
             </div>
             <div>
               <strong i18n:translate="">Published by</strong>:
               <span tal:content="reporter/fullname">Reporter</span>
               • <span i18n:translate="">Phone</span>:
-                <span tal:content="reporter/BusinessPhone|nothing">Lab Phone Number</span>
+                <span tal:content="manager/BusinessPhone|nothing">Lab Phone Number</span>
               • <a href="#" tal:attributes="href string:mailto:${laboratory/EmailAddress}">
                 <span tal:content="laboratory/EmailAddress">Lab Email</span>
               </a>
