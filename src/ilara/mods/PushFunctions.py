@@ -95,8 +95,7 @@ class IlaraFunctions(object):
                 invoice_object['title'] = sample.Title()
                 invoice_object['subtotal'] = sample.getSubtotal()
                 invoice_object['discount_amount'] = sample.getDiscountAmount()
-                invoice_object['client'] = sample.getClient()
-                logger.info('{0}: {1}: {2}'.format(sample.Title(),sample.getSubtotal(),sample.getClient()))
+                logger.info('{0}: {1}: {2}'.format(sample.Title(),sample.getSubtotal()))
             except Exception as e:
                 logger.info("Failed to get sample object properties {0}".format(e))
 
@@ -116,6 +115,7 @@ class IlaraFunctions(object):
             patient = api.get_object(patient_query_results[0])
 
             try:
+                invoice_object['client'] = aRequest_cat_query_results[0].getClientTitle
                 invoice_object['patient_phone_number'] = patient.getMobilePhone()
                 invoice_object['patient_fullname'] = patient.getFullname()
 
