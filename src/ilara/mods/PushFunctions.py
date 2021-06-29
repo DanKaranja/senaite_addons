@@ -95,7 +95,8 @@ class IlaraFunctions(object):
                 invoice_object['title'] = sample.Title()
                 invoice_object['subtotal'] = sample.getSubtotal()
                 invoice_object['discount_amount'] = sample.getDiscountAmount()
-                logger.info('{0}: {1}'.format(sample.Title(),sample.getSubtotal()))
+                invoice_object['client'] = sample.getClient()
+                logger.info('{0}: {1}: {2}'.format(sample.Title(),sample.getSubtotal(),sample.getClient()))
             except Exception as e:
                 logger.info("Failed to get sample object properties {0}".format(e))
 
@@ -134,7 +135,6 @@ class IlaraFunctions(object):
                 if len(filtered)  > 0:
                     creator = filtered[0]
                     invoice_object['creator_phone_number'] = creator.MobilePhone
-                    # invoice_object['creator_uid'] = creator.uid
                     invoice_object['creator_email'] = creator_email
             except Exception as e:
                 logger.info("Failed to get creator details {0}".format(e))  
