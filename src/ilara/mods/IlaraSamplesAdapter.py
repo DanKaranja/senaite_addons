@@ -52,7 +52,7 @@ class IlaraSamplesAdapter(object):
         host = doctor_url.split('/')[1]
         logger.info('Host: {0}'.format(host))
 
-        payment_app_url = base_url+'payments?sampleid='+sample_title
+        payment_app_url = base_url+'payments?sampleid={0}&host={1}'.format(sample_title,host)
         item['request_payment'] = "<a href='%s' target='_blank'>Not paid</a>" % payment_app_url
 
         payment_results = api.search({"portal_type": "payment", "title": sample_title})
