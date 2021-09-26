@@ -48,6 +48,7 @@ class IlaraSamplesAdapter(object):
 
         sample = api.get_object(obj)
         sample_title = sample.Title()
+        logger.info('ContactURL: {0}'.format(sample_title.getContactURL))
 
         payment_app_url = base_url+'payments?sampleid='+sample_title
         item['request_payment'] = "<a href='%s' target='_blank'>Not paid</a>" % payment_app_url
