@@ -47,8 +47,12 @@ class IlaraSamplesReportsAdapter(object):
 
         sample = api.get_object(obj)
         ar = sample.getAnalysisRequest()
+        doctor_url = sample.getContactURL()
+        host = doctor_url.split('/')[1]
+        # logger.info('Host: {0}'.format(host))
 
-        query_url = base_url+'smspublish?sampleid='+ar.Title()
-        
-        item['sms_report'] = "<a href='%s' target='_blank'>Send SMS</a>" % query_url
+        if host == 'riverside':
+            query_url = base_url+'smspublish?sampleid='+ar.Title()
+            item['sms_report'] = "<a href='%s' target='_blank'>Send SMS</a>" % query_url
+            
         return item
